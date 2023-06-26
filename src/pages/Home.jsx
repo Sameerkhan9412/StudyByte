@@ -50,7 +50,7 @@ const Home = () => {
             </CTAButton>
         </div>
 
-        <div className='mx-3 my-12 shadow-blue-200'>
+        {/* <div className='mx-3 my-12 shadow-blue-200'>
             <video
             muted
             loop
@@ -58,7 +58,7 @@ const Home = () => {
             >
             <source  src={Banner} type="video/mp4" />
             </video>
-        </div>
+        </div> */}
 
         {/* Code Section 1 */}
         <div>

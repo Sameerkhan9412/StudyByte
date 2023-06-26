@@ -15,14 +15,13 @@ const Dashboard = () => {
     }
 
   return (
-    <div className='relative flex min-h-cal(100vh-3.5rem ng-richblack-400'>
-        <div className="h-[calc(100vh-3.5rem)] overflow-auto">
-            <Sidebar/>
-            <div className="mx-auto w-11/12 max-w-[1000px] py-10">
+    <div className='relative flex flex-row min-h-cal(100vh-3.5rem '>
+        <div className="h-[calc(100vh-3.5rem)] flex overflow-auto  bg-richblack-900 w-[100%]">
+            <Sidebar />
+            <div className=" w-11/12 max-w-[1000px] py-10 mx-10 ">
                 <Outlet/>
             </div>
         </div>
-
     </div>
   )
 }
