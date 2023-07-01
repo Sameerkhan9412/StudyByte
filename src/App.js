@@ -9,6 +9,7 @@ import Signup from "./pages/Signup"
 import ForgetPassword from "./pages/ForgetPassword";
 import UpdataPassword from "./pages/UpdataPassword";
 import VerifyEmail from "./pages/VerifyEmail";
+
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import MyProfile from "./components/core/Dashboard/MyProfile";
@@ -21,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import Cart from './components/core/Dashboard/Cart'
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
+import AddCourse from "./components/core/Dashboard/AddCourse";
 
 function App() {
   const dispatch = useDispatch();
@@ -81,6 +83,14 @@ function App() {
           </>
         )
       }
+      {
+        user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+          <>
+          <Route path="dashboard/add-course" element={<AddCourse/>} />
+          <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+          </>
+        )
+}
   </Route>
         <Route path="*" element={<Error/>}/>
     </Routes>

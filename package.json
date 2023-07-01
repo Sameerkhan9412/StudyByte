@@ -9,6 +9,7 @@
     "concurrently": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.45.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0",
@@ -20,6 +21,7 @@
     "react-type-animation": "^3.0.1",
     "redux-toolkit": "^1.1.2",
     "swiper": "^9.3.2",
+    "video-react": "^0.16.0",
     "web-vitals": "^2.1.4"
   },
   "author": "Sameer Khan",
