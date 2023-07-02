@@ -23,6 +23,7 @@ import { ACCOUNT_TYPE } from "./utils/constants";
 import Cart from './components/core/Dashboard/Cart'
 import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
 import AddCourse from "./components/core/Dashboard/AddCourse";
+import MyCourses from "./components/core/Dashboard/MyCourses";
 
 function App() {
   const dispatch = useDispatch();
@@ -88,6 +89,7 @@ function App() {
           <>
           <Route path="dashboard/add-course" element={<AddCourse/>} />
           <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />
+          <Route path="dashboard/my-courses" element={<MyCourses />} />
           </>
         )
 }

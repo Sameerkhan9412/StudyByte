@@ -112,7 +112,7 @@ export const editCourseDetails = async (data, token) => {
   try {
     const response = await apiConnector("POST", EDIT_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     })
     console.log("EDIT COURSE API RESPONSE............", response)
     if (!response?.data?.success) {
@@ -229,11 +229,13 @@ export const deleteSection = async (data, token) => {
     if (!response?.data?.success) {
       throw new Error("Could Not Delete Section")
     }
+    console.log("bye bye")
     toast.success("Course Section Deleted")
     result = response?.data?.data
   } catch (error) {
-    console.log("DELETE SECTION API ERROR............", error)
+    console.log("DELETE SECTION API ERROR............ sameer khan", error)
     toast.error(error.message)
+    console.log("hiiiii");
   }
   toast.dismiss(toastId)
   return result

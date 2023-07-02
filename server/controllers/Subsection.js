@@ -54,8 +54,8 @@ exports.createSubSection = async (req, res) => {
   
   exports.updateSubSection = async (req, res) => {
     try {
-      const { sectionId, title, description } = req.body
-      const subSection = await SubSection.findById(sectionId)
+      const { sectionId,subSectionId, title, description } = req.body
+      const subSection = await SubSection.findById(subSectionId)
   
       if (!subSection) {
         return res.status(404).json({
@@ -101,7 +101,7 @@ exports.createSubSection = async (req, res) => {
   
   exports.deleteSubSection = async (req, res) => {
     try {
-      const { sectionId, courseId } = req.body
+      const { subSectionId, sectionId } = req.body
       await Section.findByIdAndUpdate(
         { _id: sectionId },
         {
