@@ -218,10 +218,35 @@ export const updateSubSection = async (data, token) => {
 
 // delete a section
 // delete a section
+// export const deleteSection = async (data, token) => {
+//   let result = null
+//   const toastId = toast.loading("Loading...")
+//   try {
+//     console.log("hiiiii");
+//     const response = await apiConnector("POST", DELETE_SECTION_API, data, {
+//       Authorization: `Bearer ${token}`,
+//     })
+//     console.log("DELETE SECTION API RESPONSE............", response)
+//     if (!response?.data?.success) {
+//       throw new Error("Could Not Delete Section")
+//     }
+//     console.log("bye bye")
+//     toast.success("Course Section Deleted")
+//     result = response?.data?.data
+//   } catch (error) {
+//     console.log("DELETE SECTION API ERROR............ sameer khan", error)
+//     toast.error(error.message)
+//   }
+//   toast.dismiss(toastId)
+//   return result
+// }
+
+// delete a section
 export const deleteSection = async (data, token) => {
   let result = null
-  const toastId = toast.loading("Loading...")
+  const toastId = toast.loading("Loading...")  
   try {
+    console.log("ho ho")
     const response = await apiConnector("POST", DELETE_SECTION_API, data, {
       Authorization: `Bearer ${token}`,
     })
@@ -229,17 +254,17 @@ export const deleteSection = async (data, token) => {
     if (!response?.data?.success) {
       throw new Error("Could Not Delete Section")
     }
-    console.log("bye bye")
     toast.success("Course Section Deleted")
     result = response?.data?.data
-  } catch (error) {
-    console.log("DELETE SECTION API ERROR............ sameer khan", error)
+  } catch (error) { 
+    console.log("DELETE SECTION API ERROR............", error)
     toast.error(error.message)
-    console.log("hiiiii");
   }
   toast.dismiss(toastId)
   return result
 }
+
+
 // delete a subsection
 export const deleteSubSection = async (data, token) => {
   let result = null

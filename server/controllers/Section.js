@@ -1,6 +1,8 @@
 // const Section = require("../models/Section");
 const Section =require("../models/Section")
 const Course = require("../models/Course");
+const Subsection = require("../models/Subsection");
+// const { default: SubSectionModal } = require("../../src/components/core/Dashboard/AddCourse/CourseBuilder/SubSectionModal");
 // const SubSection = require("../models/SubSection");
 // const SubSection =require("../models/SubSection");
 // CREATE a new section
@@ -107,7 +109,7 @@ exports.deleteSection = async (req, res) => {
 		}
 
 		//delete sub section
-		await SubSection.deleteMany({_id: {$in: section.subSection}});
+		await Subsection.deleteMany({_id: {$in: section.subSection}});
 		await Section.findByIdAndDelete(sectionId);
 		console.log("secton deleted successful");
 

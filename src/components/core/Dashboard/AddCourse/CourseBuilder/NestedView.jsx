@@ -24,13 +24,18 @@ export default function NestedView({ handleChangeEditSectionName }) {
     const [editSubSection, setEditSubSection] = useState(null)
     // to keep track of confirmation modal
     const [confirmationModal, setConfirmationModal] = useState(null)
+    useEffect(()=>{
+      console.log("Rendring it againn")
+    })
   
     const handleDeleleSection = async (sectionId) => {
       const result = await deleteSection({
         sectionId,
-        courseId: course._id,
-        token,
-      })
+        courseId: course._id
+      },
+      token,
+      )
+      console.log("Printing after delete section",result)
       if (result) {
         dispatch(setCourse(result))
       }
@@ -43,9 +48,9 @@ export default function NestedView({ handleChangeEditSectionName }) {
         // update the structure of course
         const updatedCourseContent = course.courseContent.map((section) =>
           section._id === sectionId ? result : section
-        )
-        const updatedCourse = { ...course, courseContent: updatedCourseContent }
-        dispatch(setCourse(updatedCourse))
+          )
+          const updatedCourse = { ...course, courseContent: updatedCourseContent }
+          dispatch(setCourse(updatedCourse))
       }
       setConfirmationModal(null)
     }
@@ -98,7 +103,7 @@ export default function NestedView({ handleChangeEditSectionName }) {
               </summary>
               <div className="px-6 pb-4">
                 {/* Render All Sub Sections Within a Section */}
-                {section.subSection.map((data) => (
+                {section?.subSection?.map((data) => (
                   <div
                     key={data?._id}
                     onClick={() => setViewSubSection(data)}
