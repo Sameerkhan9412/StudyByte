@@ -109,6 +109,7 @@ export const addCourseDetails = async (data, token) => {
 export const editCourseDetails = async (data, token) => {
   let result = null
   const toastId = toast.loading("Loading...")
+  console.log("hee")
   try {
     const response = await apiConnector("POST", EDIT_COURSE_API, data, {
       "Content-Type": "multipart/form-data",
@@ -121,12 +122,13 @@ export const editCourseDetails = async (data, token) => {
     toast.success("Course Details Updated Successfully")
     result = response?.data?.data
   } catch (error) {
-    console.log("EDIT COURSE API ERROR............", error)
+    console.log("EDIT COURSE API ERROR.............", error)
     toast.error(error.message)
   }
   toast.dismiss(toastId)
   return result
 }
+
 
 // create a section
 export const createSection = async (data, token) => {

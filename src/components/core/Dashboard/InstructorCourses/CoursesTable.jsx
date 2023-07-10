@@ -22,7 +22,6 @@ const CoursesTable = ({courses,setcourses}) => {
         await deleteCourse({courseId:courseId},token);
         const result=await fetchInstructorCourses(token)
         console.log("this is output");
-        console.log(result);
         if(result){
             setCourse(result);
         }
@@ -30,8 +29,8 @@ const CoursesTable = ({courses,setcourses}) => {
         setLoading(false);
     }
   return (
-    <div>
-      <Table>
+    <div className='text-white'>
+      <Table className='text-white'>
         <Thead>
             <Tr>
                 <Th>Courses</Th>
@@ -66,14 +65,15 @@ const CoursesTable = ({courses,setcourses}) => {
                                 }
                             </div>
                         </Td>
-                        <td>
+                        <Td>02 hr 30 min</Td>
+                        <Td>
                             ${course.price}
-                        </td>
-                        <td>
+                        </Td>
+                        <Td>
                             <button disabled={loading} 
                             // onClick={()=>navigate()}
                              >EDIT <FiEdit2/>
-                             </button>
+                             </button> 
                             <button disabled={loading} 
                             onClick={()=>{
                                 setConfirmationModel({
@@ -82,14 +82,14 @@ const CoursesTable = ({courses,setcourses}) => {
                                     btn1Text:"Delete" ,
                                     btn2Text:"Cancel",
                                     btn1Handler:!loading ?
-                                    ()=>handlerCourseDelete(course._id):(<div>hello</div>),
+                                    ()=>handlerCourseDelete(course._id):()=>{},
                                     btn2Handler:loading?()=>setConfirmationModel(null):()=>{},
                                 })
                             }
                             }
                              >Delete  <AiOutlineDelete/>
                              </button>
-                        </td>
+                        </Td>
                     </Tr>
 
                 ))
