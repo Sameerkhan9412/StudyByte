@@ -56,11 +56,12 @@ const Navbar = () => {
     }
 
   return (
-    <div className='flex h-14 items-center justify-center border-b-[1px] border-b-richblack-700'>
+    <div className='flex h-16 items-center justify-center border-b-[1px] border-b-richblack-700'>
       <div className='flex w-11/12 max-w-maxContent items-center justify-between'>
         {/* Image */}
       <Link to="/">
-        <img src={logo} width={160} height={42} loading='lazy'/>
+        {/* <img src={logo} width={160} height={32} loading='lazy' margin='10px' /> */}
+        <img src={logo} className=' h-12' />
       </Link>
 
       {/* Nav Links */}

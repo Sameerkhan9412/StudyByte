@@ -22,10 +22,10 @@ const MyCourses = () => {
         fetchCourses();
     },[])
   return (
-    <div>
-        <div>
+    <div className='text-white'>
+        <div className='flex  flex-col' >
             <h1>My Courses</h1>
-            <IconBtn text="Add Course" onclick={()=>navigate("/dashboard/add-course")}>
+            <IconBtn text="Add Course" onclick={()=>navigate("/dashboard/add-course") } className="w-auto">
             <AiOutlinePlus/>
             </IconBtn>
         </div>

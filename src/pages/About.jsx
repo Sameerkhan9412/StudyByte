@@ -18,7 +18,7 @@ const About = () => {
             <header>
                 Driving Innovation in Online Education for a 
                 <HighLightText text={"Brighter Future"}/>
-                <p>Studynotion is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
+                <p>StudyByte is at the forefront of driving innovation in online education. We're passionate about creating a brighter future by offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.</p>
             </header>
             <div className='flex flex-row justify-center gap-x-3 mx-auto '>
                   <img src={bannerImg1} alt="" />
