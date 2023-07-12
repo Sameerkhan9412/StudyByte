@@ -11,16 +11,16 @@ import { categories } from '../../services/apis'
 import { useState } from 'react'
 import {IoIosArrowDropdownCircle} from "react-icons/io"
 
-const subLinks = [
-    {
-        title: "python",
-        link:"/catalog/python"
-    },
-    {
-        title: "web dev",
-        link:"/catalog/web-development"
-    },
-];
+// const subLinks = [
+//     {
+//         title: "python",
+//         link:"/catalog/python"
+//     },
+//     {
+//         title: "web dev",
+//         link:"/catalog/web-development"
+//     },
+// ];
 
 
 const Navbar = () => {
@@ -30,13 +30,14 @@ const Navbar = () => {
     const {totalItems} = useSelector( (state) => state.cart )
     const location = useLocation();
 
-    const [ssubLinks, setSsubLinks]  = useState([]);
+    const [subLinks, setsubLinks]  = useState([]);
 
     const fetchSublinks = async() => {
         try{
             const result = await apiConnector("GET", categories.CATEGORIES_API);
             console.log("Printing Sublinks result:" , result);
-            setSsubLinks(result.data.data);
+            setsubLinks(result.data.data);
+            console.log(result.data.data)
         }
         catch(error) {
             console.log("Could not fetch the category list");
@@ -76,26 +77,18 @@ const Navbar = () => {
                                 <p>{link.title}</p>
                                 <IoIosArrowDropdownCircle/>
 
-                                <div className='invisible absolute left-[50%]
-                                    translate-x-[-50%] translate-y-[80%]
-                                 top-[50%]
-                                flex flex-col rounded-md bg-richblack-5 p-4 text-richblack-900
-                                opacity-0 transition-all duration-200 group-hover:visible
-                                group-hover:opacity-100 lg:w-[300px]'>
+                                <div className='invisible absolute left-[50%] top-[50%] z-[1000] flex w-[200px] translate-x-[-50%] translate-y-[3em] flex-col rounded-lg bg-richblack-5 p-4 text-richblack-900 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-[1.65em] group-hover:opacity-100 lg:w-[300px]'>
 
-                                <div className='absolute left-[50%] top-0
-                                translate-x-[80%]
-                                translate-y-[-45%] h-6 w-6 rotate-45 rounded bg-richblack-5'>
+                                <div className='absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5'>
                                 </div>
-
                                 {
-                                    subLinks.length ? (
-                                            subLinks.map( (subLink, index) => (
-                                                <Link to={`${subLink.link}`} key={index}>
-                                                    <p>{subLink.title}</p>
+                                    subLinks.length>0 ? (
+                                        subLinks.map( (subLink, index) => (
+                                                <Link to={`catalog/${subLink.name.split(" ").join("-").toLowerCase()}`} key={index} className='rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50'>
+                                                    <p>{subLink.name} and my insec is {index}</p>
                                                 </Link>
                                             ) )
-                                    ) : (<div></div>)
+                                    ) : (<div>No Courses Found</div>)
                                 }
 
                                 </div>
