@@ -50,7 +50,7 @@ const Home = () => {
             </CTAButton>
         </div>
 
-        {/* <div className='mx-3 my-12 shadow-blue-200'>
+        <div className='mx-3 my-12 shadow-blue-200 w-[100%] max-w-[500px]'>
             <video
             muted
             loop
@@ -58,7 +58,7 @@ const Home = () => {
             >
             <source  src={Banner} type="video/mp4" />
             </video>
-        </div> */}
+        </div>
 
         {/* Code Section 1 */}
         <div>
@@ -89,7 +89,10 @@ const Home = () => {
                     }
                 }
 
-                codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet"href="styles.css">\n/head>\n`}
+                codeblock={`<!DOCTYPE html>\n<html>\n<head>\n<title>Example</title>\n<link rel="stylesheet"href="styles.css">\n</head>\n<h1>Heading no. 1</h1>  
+                <h2>Heading no. 2</h2>  
+                <h3>Heading no. 3</h3>
+                </body>\n  </html>`}
                 codeColor={"text-yellow-25"}
             />
         </div>
@@ -123,7 +126,10 @@ const Home = () => {
                     }
                 }
 
-                codeblock={`<<!DOCTYPE html>\n<html>\nhead><title>Example</title><linkrel="stylesheet"href="styles.css">\n/head>\n`}
+                codeblock={`<!DOCTYPE html>\n<html>\n<head>\n<title>Example</title>\n<link rel="stylesheet"href="styles.css">\n</head>\n<h1>Heading no. 1</h1>  
+                <h2>Heading no. 2</h2>  
+                <h3>Heading no. 3</h3>
+                </body>\n  </html>`}
                 codeColor={"text-yellow-25"}
             />
         </div>
