@@ -71,14 +71,25 @@ exports.createCourse = async (req, res) => {
             }
         }, {new: true});
         // Add the new course to the Categories
-        await Category.findByIdAndUpdate({
-            _id: category
-        }, {
+        // const hi=await Category.findByIdAndUpdate({
+        //     _id: categoryDetails._id
+        // }, {
+        //     $push: {
+        //         course: newCourse._id
+        //     }
+        // }, {new: true});
+        const categoryDetails2 = await Category.findByIdAndUpdate(
+          { _id: category },
+          {
             $push: {
-                course: newCourse._id
-            }
-        }, {new: true});
+              courses: newCourse._id,
+            },
+          },
+          { new: true }
+        )
+        
         // Return the new course and a success message
+        console.log("this is updated cat",categoryDetails2)
         res.status(200).json({success: true, data: newCourse, message: "Course Created Successfully"});
     } catch (error) { // Handle any errors that occur during the creation of the course
         console.error(error);
