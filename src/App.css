@@ -9,3 +9,7 @@ html, body {
 .homepage_bg {
     background: url("../src/assets/Images/bghome.svg");
 }
+.section_heading {
+    @apply text-2xl font-bold text-richblack-5 lg:text-4xl;
+  }
+  

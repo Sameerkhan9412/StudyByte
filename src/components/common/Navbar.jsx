@@ -85,7 +85,7 @@ const Navbar = () => {
                                     subLinks.length>0 ? (
                                         subLinks.map( (subLink, index) => (
                                                 <Link to={`catalog/${subLink.name.split(" ").join("-").toLowerCase()}`} key={index} className='rounded-lg bg-transparent py-4 pl-4 hover:bg-richblack-50'>
-                                                    <p>{subLink.name} and my insec is {index}</p>
+                                                    <p>{subLink.name}</p>
                                                 </Link>
                                             ) )
                                     ) : (<div>No Courses Found</div>)

@@ -1,75 +1,143 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { getCatalogPageData } from '../services/PageAndComponentsData';
+import { getCatalogPageData } from '../services/operations/PageAndComponentsData';
 import { useParams } from 'react-router-dom';
 import { apiConnector } from '../services/apiConnector';
 import Footer from '../components/common/Footer'
 import { categories } from '../services/apis';
+import { useSelector } from 'react-redux';
+import Course_Card from '../components/core/Catalog/Course_Card';
+import CourseSlider from '../components/core/Catalog/CourseSlider';
+import { Error } from '../pages/Error';
 
 const Catalog = () => {
+  const { loading } = useSelector((state) => state.profile)
   
   const {catalogName} =useParams();
   const [catalogPageData,setCatalogPageData]=useState(null);
   const [categoryId,setCategoryId]=useState("");
 
   // fetch alll categories
-  useEffect(()=>{
-    const getCategories=async()=>{
-      const res=await apiConnector("GET",categories.CATEGORIES_API)
-      console.log("this is respnsoe of catalog",res)
-      const cateogory_id=res?.data?.data.filter((ct)=> ct.name.split(" ").join("-").toLowerCase()===catalogName)[0]._id;
-      setCategoryId(cateogory_id);
-    }
-    getCategories();
-  },[catalogName])
-  
-  useEffect(()=>{
-    const getCategoriesDetails=async()=>{
+  useEffect(() => {
+    (async () => {
       try {
-        console.log("hoooooooooooooooo")
-        console.log("my category id is ".categoryId);
-        const res = await getCatalogPageData(categoryId)
-        setCatalogPageData(res)
+        const res = await apiConnector("GET", categories.CATEGORIES_API)
+        const category_id = res?.data?.data?.filter(
+          (ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName
+        )[0]._id
+        setCategoryId(category_id)
       } catch (error) {
-        console.log(error);
+        console.log("Could not fetch Categories.", error)
       }
+    })()
+  }, [catalogName])
+  console.log("hihihi",catalogPageData)
+  useEffect(() => {
+    if (categoryId) {
+      ;(async () => {
+        try {
+          const res = await getCatalogPageData(categoryId)
+          setCatalogPageData(res)
+          console.log("my res",res);
+        } catch (error) {
+          console.log(error)
+        }
+      }
+        
+      )()
     }
-    getCategoriesDetails();
-  },[categoryId]);
+  }, [categoryId])
 
+  if (loading || !catalogPageData) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <div className="spinner"></div>
+      </div>
+    )
+  }
+  if (!loading && !catalogPageData.success) {
+    return <Error />
+  }
 
   return (
-    <div className='text-white'>
-      <div>
-        <p>{`Home/Catalog/`}
-        <span></span></p>
-        <p></p>
-        <p></p>
+    <>
+    {/* hero section */}
+    <div className='box-content bg-richblack-800 px-4'>
+      <div className='mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent '>
+        <p className='text-sm text-richblack-300'>{`Home/Catalog/`}
+        <span className='text-yellow-25'> 
+          {catalogPageData?.data?.selectedCategory
+?.name}
+          </span></p>
+        <p className='text-3xl text-richblack-5'>{catalogPageData?.data?.selectedCategory
+?.name}</p>
+        <p className='max-w-[870px] text-richblack-200'>{catalogPageData?.data?.selectedCategory
+?.description}</p>
       </div>
       <div>
-        {/* section 1 */}
-        <div>
-        <div className='flex gap-x-3'>
-          <p>Most Popular</p>
-          <p>New</p>
+       {/* Section 1 */}
+      <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+        <div className="section_heading">Courses to get you started</div>
+        <div className="my-4 flex border-b border-b-richblack-600 text-sm">
+          <p
+            // className={`px-4 py-2 ${
+            //   active === 1
+            //     ? "border-b border-b-yellow-25 text-yellow-25"
+            //     : "text-richblack-50"
+            // } cursor-pointer`}
+            // onClick={() => setActive(1)}
+          >
+            Most Populer
+          </p>
+          <p
+            // className={`px-4 py-2 ${
+            //   active === 2
+            //     ? "border-b border-b-yellow-25 text-yellow-25"
+            //     : "text-richblack-50"
+            // } cursor-pointer`}
+            // onClick={() => setActive(2)}
+          >
+            New
+          </p>
         </div>
+        <div>
+          <CourseSlider
+            // Courses={catalogPageData?.data?.selectedCategory?.courses}
+            Courses={catalogPageData?.data?.selectedCategory?.courses}
+          />
+          
+        </div>
+      </div>
+      {/* Section 2 */}
+      <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+        <div className="section_heading">
+          Top courses in {catalogPageData?.data?.differentCategory?.name}
+        </div>
+        <div className="py-8">
+          <CourseSlider
+            Courses={catalogPageData?.data?.differentCategory?.courses}
+          />
+        </div>
+      </div>
 
+      {/* Section 3 */}
+      <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+        <div className="section_heading">Frequently Bought</div>
+        <div className="py-8">
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {catalogPageData?.data?.mostSellingCourses
+              ?.slice(0, 4)
+              .map((course, i) => (
+                <Course_Card course={course} key={i} Height={"h-[400px]"} />
+              ))}
+          </div>
         </div>
-      {/* section 2 */}
-      <div>
-        <p>Top Courses</p>
-        <div>
-          {/* <CourseSlider/> */}
-        </div>
-      </div>
-      {/* section 3 */}
-      <div>
-        <p>Frequently Bought Together</p>
       </div>
       </div>
       <Footer/>
     </div>
+    </>
   )
 }
 
