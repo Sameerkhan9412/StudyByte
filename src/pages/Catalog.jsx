@@ -9,7 +9,7 @@ import { categories } from '../services/apis';
 import { useSelector } from 'react-redux';
 import Course_Card from '../components/core/Catalog/Course_Card';
 import CourseSlider from '../components/core/Catalog/CourseSlider';
-import { Error } from '../pages/Error';
+import Error from './Error';
 
 const Catalog = () => {
   const { loading } = useSelector((state) => state.profile)

@@ -114,7 +114,7 @@ const Navbar = () => {
 
 
         {/* Login/SignUp/Dashboard */}
-        <div className='flex gap-x-4 items-center'>
+        <div className='flex gap-x-4 items-center text-white'>
 
             {
                 user && user?.accountType != "Instructor" && (

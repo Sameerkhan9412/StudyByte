@@ -1,20 +1,24 @@
 const CourseProgress = require("../models/CourseProgress");
-const SubSection = require("../models/SubSection");
+// const SubSection = require("../models/SubSection");
+// const SubSection=require("../models/SubSection");
+const SubSection = require("../models/Subsection"); 
+
 
 
 exports.updateCourseProgress = async(req,res) => {
     const {courseId, subSectionId} = req.body;
+    console.log("sksksks",subSectionId)
     const userId = req.user.id;
 
     try{
         //check if the subsection is valid
         const subSection = await SubSection.findById(subSectionId);
 
+        console.log("SubSection Validation Done");
         if(!subSection) {
             return res.status(404).json({error:"Invalid SUbSection"});
         }
 
-        console.log("SubSection Validation Done");
 
         //check for old entry 
         let courseProgress = await CourseProgress.findOne({

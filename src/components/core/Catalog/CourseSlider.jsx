@@ -24,7 +24,7 @@ function Course_Slider({ Courses }) {
           pagination={true}
           modules={[FreeMode, Pagination,Autoplay]}
           autoplay={{
-            delay: 1000,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           navigation={true}
