@@ -13,6 +13,7 @@ import LearningGrid from "../components/core/AboutPage/LearningGrid"
 import Quote from "../components/core/AboutPage/Quote"
 import StatsComponenet from "../components/core/AboutPage/StatsComponents"
 import HighlightText from "../components/core/HomePage/HighlightText"
+import ReviewSlider from "../components/common/ReviewSlider"
 
 const About = () => {
   return (
@@ -115,7 +116,7 @@ const About = () => {
         <h1 className="text-center text-4xl font-semibold mt-8">
           Reviews from other learners
         </h1>
-        {/* <ReviewSlider /> */}
+        <ReviewSlider/>
       </div>
       <Footer />
     </div>
