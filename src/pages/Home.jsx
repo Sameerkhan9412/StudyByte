@@ -51,13 +51,13 @@ const Home = () => {
             </CTAButton>
         </div>
 
-        <div className='mx-3 my-12 shadow-blue-200 w-[100%] max-w-[500px]'>
+        <div className='mx-3 my-12 shadow-lg'>
             <video
             muted
             loop
             autoPlay
             >
-            <source  src={Banner} type="video/mp4" />
+            <source src={Banner}/>
             </video>
         </div>
 
@@ -90,10 +90,7 @@ const Home = () => {
                     }
                 }
 
-                codeblock={`<!DOCTYPE html>\n<html>\n<head>\n<title>Example</title>\n<link rel="stylesheet"href="styles.css">\n</head>\n<h1>Heading no. 1</h1>  
-                <h2>Heading no. 2</h2>  
-                <h3>Heading no. 3</h3>
-                </body>\n  </html>`}
+                codeblock={`<!DOCTYPE html>\n<html>\n<head>\n<title>Example</title>\n<linkrel="stylesheet"href="styles.css">\n</head>\n<body>\n<ahref="/">Header</a>\n</body>\n</html>`}
                 codeColor={"text-yellow-25"}
             />
         </div>
@@ -127,10 +124,7 @@ const Home = () => {
                     }
                 }
 
-                codeblock={`<!DOCTYPE html>\n<html>\n<head>\n<title>Example</title>\n<link rel="stylesheet"href="styles.css">\n</head>\n<h1>Heading no. 1</h1>  
-                <h2>Heading no. 2</h2>  
-                <h3>Heading no. 3</h3>
-                </body>\n  </html>`}
+                codeblock={`<!DOCTYPE html>\n<html>\n<head>\n<title>Example</title>\n<linkrel="stylesheet"href="styles.css">\n</head>\n<body>\n<ahref="/">Header</a>\n</body>\n</html>`}
                 codeColor={"text-yellow-25"}
             />
         </div>
@@ -140,20 +134,20 @@ const Home = () => {
 
       {/*Section 2  */}
       <div className='bg-pure-greys-5 text-richblack-700'>
-            <div className='homepage_bg h-[310px]'>
+            <div className='h-[333px] homepage_bg'>
 
                 <div className='w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-5 mx-auto'>
-                    <div className='h-[150px]'></div>
-                    <div className='flex flex-row gap-7 text-white '>
+                    <div className='h-[250px]'></div>
+                    <div className='text-white flex gap-7 '>
                         <CTAButton active={true} linkto={"/signup"}>
-                            <div className='flex items-center gap-3' >
+                            <div className='flex gap-2 items-center' >
                                 Explore Full Catalog
                                 <FaArrowRight />
                             </div>
                             
                         </CTAButton>
                         <CTAButton active={false} linkto={"/signup"}>
-                            <div>
+                            <div className='flex items-center'>
                                 Learn more
                             </div>
                         </CTAButton>
@@ -164,15 +158,15 @@ const Home = () => {
 
             </div>
 
-            <div className='mx-auto w-11/12 max-w-maxContent flex flex-col items-center justify-between gap-7'>
+            <div className='w-11/12 mx-auto flex max-w-maxContent flex-col items-center justify-between gap-7'>
 
-                <div className='flex flex-row gap-5 mb-10 mt-[95px]'>
+                <div className='flex flex-row gap-10 mb-10 mt-[100px]'>
                     <div className='text-4xl font-semibold w-[45%]'>
                         Get the Skills you need for a
                         <HighlightText text={"Job that is in demand"} />
                     </div>
 
-                    <div className='flex flex-col gap-10 w-[40%] items-start'>
+                    <div className='flex flex-col gap-8 w-[40%] items-start'>
                     <div className='text-[16px]'>
                     The modern StudyByte is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                     </div>
@@ -199,11 +193,11 @@ const Home = () => {
 
 
       {/*Section 3 */}
-      <div className='w-11/12 mx-auto max-w-maxContent flex-col items-center justify-between gap-8 first-letter bg-richblack-900 text-white'>
+      <div className='w-11/12 mx-auto max-w-maxContent flex flex-col items-center justify-between gap-8 bg-richblack-900 text-white'>
 
             <InstructorSection />
 
-            <h2 className='text-center text-4xl font-semobold mt-10'>review from Other Learners</h2>
+            <h2 className='font-semibold text-4xl text-center mt-10'>review from Other Learners</h2>
             {/* Review Slider here */}
             <ReviewSlider/>
       </div>

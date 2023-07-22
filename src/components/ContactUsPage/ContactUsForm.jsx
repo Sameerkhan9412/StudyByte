@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
+
 import CountryCode from "../../data/countrycode.json"
 import { apiConnector } from "../../services/apiConnector"
 import { contactusEndpoint } from "../../services/apis"
@@ -57,7 +58,7 @@ const ContactUsForm = () => {
             name="firstname"
             id="firstname"
             placeholder="Enter first name"
-            className="form-style p-1 outline-none rounded-lg" 
+            className="form-style rounded-md p-1"
             {...register("firstname", { required: true })}
           />
           {errors.firstname && (
@@ -75,7 +76,7 @@ const ContactUsForm = () => {
             name="lastname"
             id="lastname"
             placeholder="Enter last name"
-            className="form-style p-1 outline-none rounded-lg" 
+            className="form-style p-1 rounded-md"
             {...register("lastname")}
           />
         </div>
@@ -90,7 +91,7 @@ const ContactUsForm = () => {
           name="email"
           id="email"
           placeholder="Enter email address"
-          className="form-style p-1 outline-none rounded-lg" 
+          className="form-style p-1 rounded-md"
           {...register("email", { required: true })}
         />
         {errors.email && (
@@ -112,7 +113,7 @@ const ContactUsForm = () => {
               name="firstname"
               id="firstname"
               placeholder="Enter first name"
-              className="form-style p-1 outline-none rounded-lg" 
+              className="form-style p-1 rounded-md text-richblack-500"
               {...register("countrycode", { required: true })}
             >
               {CountryCode.map((ele, i) => {
@@ -130,7 +131,7 @@ const ContactUsForm = () => {
               name="phonenumber"
               id="phonenumber"
               placeholder="12345 67890"
-              className="form-style p-1 outline-none rounded-lg" 
+              className="form-style p-1 rounded-md text-richblack-300"
               {...register("phoneNo", {
                 required: {
                   value: true,
@@ -159,7 +160,7 @@ const ContactUsForm = () => {
           cols="30"
           rows="7"
           placeholder="Enter your message here"
-          className="form-style p-1 outline-none rounded-lg" 
+          className="form-style p-1 rounded-md text-richblack-300"
           {...register("message", { required: true })}
         />
         {errors.message && (
@@ -172,10 +173,10 @@ const ContactUsForm = () => {
       <button
         disabled={loading}
         type="submit"
-        className={`rounded-md bg-yellow-50 px-6 py-3 text-center text-[13px] font-bold text-black shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)] 
+        className={`rounded-md bg-yellow-50 px-6 py-3 text-center text-[13px] font-bold text-black 
          ${
            !loading &&
-           "transition-all duration-200 hover:scale-95 hover:shadow-none"
+           "transition-all duration-200 hover:scale-95"
          }  disabled:bg-richblack-500 sm:text-[16px] `}
       >
         Send Message

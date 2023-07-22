@@ -1,5 +1,7 @@
 import React from "react"
 import copy from "copy-to-clipboard"
+import { buyCourse } from "../../../services/operations/StudentFeaturesAPI"
+
 import { toast } from "react-hot-toast"
 import { BsFillCaretRightFill } from "react-icons/bs"
 import { FaShareSquare } from "react-icons/fa"
@@ -16,11 +18,27 @@ const CourseIncludes = [
   "Certificate of completion",
 ]
 
-function CourseDetailsCard({ course, setConfirmationModal, handledBuyCourse }) {
+function CourseDetailsCard({ course, setConfirmationModal }) {
   const { user } = useSelector((state) => state.profile)
   const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const handledBuyCourse = () => {
+    console.log("yes if a mlcick")
+    if (token) {
+      buyCourse(token, [courseId], user, navigate, dispatch)
+      return
+    }
+    setConfirmationModal({
+      text1: "You are not logged in!",
+      text2: "Please login to Purchase Course.",
+      btn1Text: "Login",
+      btn2Text: "Cancel",
+      btn1Handler: () => navigate("/login"),
+      btn2Handler: () => setConfirmationModal(null),
+    })
+  }
 
   const {
     thumbnail: ThumbnailImage,
@@ -72,8 +90,8 @@ function CourseDetailsCard({ course, setConfirmationModal, handledBuyCourse }) {
           <div className="space-x-3 pb-4 text-3xl font-semibold">
             Rs. {CurrentPrice}
           </div>
-          <div className="flex flex-col gap-y-6">
-            <button className="bg-yellow-50 w-fit text-richblack-900" onClick={
+          <div className="flex flex-col gap-y-4">
+            <button className="yellowButton" onClick={
               user&&course?.studentsEnrolled.includes(user._id)
               ?()=>navigate("/dashboard/enrolled-courses")
               :handledBuyCourse
@@ -85,7 +103,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handledBuyCourse }) {
             </button>
             {
               (!course?.studentsEnrolled.includes(user?._id)&&(
-                <button className="bg-yellow-50 w-fit text-richblack-900" onClick={handleAddToCart}>Add to Cart</button>
+                <button className="blackButton" onClick={handleAddToCart}>Add to Cart</button>
               ))
             }
           </div>

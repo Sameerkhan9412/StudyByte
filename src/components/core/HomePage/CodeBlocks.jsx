@@ -34,10 +34,10 @@ const CodeBlocks = ({
     </div>
 
      {/*Section 2*/}
-     <div className=' h-fit  flex flex-row text-10[px] w-[100%] py-4 lg:w-[500px]'> 
-        {/*HW -> BG gradient*/}
-
-        <div className='text-center flex flex-col w-[10%] text-richblack-400 font-inter font-bold'>
+     <div className=' h-fit flex text-[15px] w-[100%] py-4 lg:w-[500px] relative bg-richblack-800 rounded-md'> 
+     <div className='circle1 h-[70px] w-[70px] rounded-full absolute top-8 right-28 z-0'></div>
+     <div className='circle2 h-[70px] w-[70px] rounded-full absolute bottom-7 left-28 z-0'></div>
+        <div className='text-center flex flex-col w-[10%] text-richblack-300 font-inter font-bold z-10'>
             <p>1</p>
             <p>2</p>
             <p>3</p>
@@ -48,12 +48,11 @@ const CodeBlocks = ({
             <p>8</p>
             <p>9</p>
             <p>10</p>
-            <p>11</p>
         </div>
 
-        <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-2`}>
+        <div className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-2 z-10` }>
            <TypeAnimation
-            sequence={[codeblock, 2000, ""]}
+            sequence={[codeblock, 3000, ""]}
             repeat={Infinity}
             cursor={true}
            

@@ -67,7 +67,7 @@ const otpTemplate = (otp) => {
 	<body>
 		<div class="container">
 			<a href=""><img class="logo"
-					src="https://drive.google.com/file/d/1ncf2ubNVi3_ADpxuPby3V3VJsDphy_TF/view?usp=drive_link" alt="StudyByte Logo"></a>
+					src="https://res.cloudinary.com/dptn1wg62/image/upload/v1690021344/Logo-Full-Light_dmyqu2.png" alt="StudyByte Logo"></a>
 			<div class="message">OTP Verification Email</div>
 			<div class="body">
 				<p>Dear User,</p>
@@ -78,7 +78,7 @@ const otpTemplate = (otp) => {
 				Once your account is verified, you will have access to our platform and its features.</p>
 			</div>
 			<div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
-					href="mailto:info@StudyByte.com">info@StudyByte.com</a>. We are here to help!</div>
+					href="mailto:sameerkhann9412@gmail.com">info@StudyByte.com</a>. We are here to help!</div>
 		</div>
 	</body>
 	

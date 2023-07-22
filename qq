@@ -1,0 +1,111 @@
+[33mcommit d689e46fcfb6cfbebda82b4979e9fe06e2f842c8[m[33m ([m[1;36mHEAD -> [m[1;32mdevelopInstructor[m[33m)[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Fri Jul 21 16:08:38 2023 +0530
+
+    adding instructor dashboard
+
+[33mcommit e586ccba3b926ccd18a810598647699a244a2143[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Fri Jul 21 09:59:57 2023 +0530
+
+    review section is added but pending some issue related to review and lecturescompleted section
+
+[33mcommit e48972eb79523cf56a32fe1f3fc1ba91e6ab8431[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Thu Jul 20 17:21:05 2023 +0530
+
+    strudent deshboard completed
+
+[33mcommit 782623e1aa088ed1606ebc2e7680fcfcf68f5ecf[m
+Merge: a9969ca 01dbfdf
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Sat Jul 15 15:41:55 2023 +0530
+
+    merging newbranch into developInstructor branch
+
+[33mcommit 01dbfdf762d6d4126db3538a44d0a9168dd8e730[m[33m ([m[1;32mnewbranch[m[33m)[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Sat Jul 15 15:35:11 2023 +0530
+
+    catalog section completed
+
+[33mcommit 3dca59a22219c1a47eff827b1da833d653d5d03f[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Thu Jul 13 07:44:27 2023 +0530
+
+    otp sending problem resolved
+
+[33mcommit a9969ca9e571f0455f140c9144a931f157ab3011[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Wed Jul 12 15:43:22 2023 +0530
+
+    commit for otp
+
+[33mcommit 6d05093c3de25e223246e25d727e508b62e225ab[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Wed Jul 12 14:03:01 2023 +0530
+
+    adding catalog is pending
+
+[33mcommit 03b6c586f111bca289f6aa7e6b9e8015eb5baa29[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Tue Jul 11 13:31:52 2023 +0530
+
+    added my Courses Section for Instructor
+
+[33mcommit ca843bf4c538489163c43dc3df04b637bb3cb715[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Mon Jul 10 15:57:26 2023 +0530
+
+    bug is resolved to published course in instructor account
+
+[33mcommit 5d9316dcd7a9ce0ceab307f4158e0085bede8960[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Sun Jul 9 14:10:15 2023 +0530
+
+    bug 1 solved to delete a course section
+
+[33mcommit 619b703e0d409d833729032d396b7f0fb86a1041[m[33m ([m[1;31morigin/developInstructor[m[33m)[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Sun Jul 2 16:15:11 2023 +0530
+
+    2 bugs is in pending
+
+[33mcommit db647d188dbfa96b6ad840b512d5cf817b7c1f12[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Sat Jul 1 14:33:12 2023 +0530
+
+    adding course add section for isntructor
+
+[33mcommit f75282bf5ea836fdc0eea314051d9bbf506b5e2b[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 3d5fcaa 1be5424
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Mon Jun 26 15:10:10 2023 +0530
+
+    Merge branch 'master' of https://github.com/Sameerkhan9412/studyNotion
+
+[33mcommit 3d5fcaa9e1059b30c5121bd0f9edef8d056d4444[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Mon Jun 26 15:08:23 2023 +0530
+
+    Add user setting functionality and many more
+
+[33mcommit 1be542417d57c87aa7ac03848aa2276eaf2a6899[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Mon Jun 26 12:29:47 2023 +0530
+
+    Create .env
+
+[33mcommit 719fc1fd0a8dbd5173023f487dba1975269a5aa0[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Mon Jun 26 12:28:37 2023 +0530
+
+    Create .env
+    
+    it is just like demo. this create by yourself because it contains personal details that i want never be share anyone.
+
+[33mcommit a5a33abd6012538c467a1817367375d95d6bf0f2[m
+Author: Sameer khan <121482820+Sameerkhan9412@users.noreply.github.com>
+Date:   Mon Jun 26 12:22:31 2023 +0530
+
+    initial commit

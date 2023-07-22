@@ -12,8 +12,6 @@ import IconBtn from "../../common/IconBtn"
 
 const VideoDetails = () => {
   const { courseId, sectionId, subSectionId } = useParams()
-  console.log("section id form params",sectionId);
-  console.log("subsection id form params",subSectionId);
   const navigate = useNavigate()
   const location = useLocation()
   const playerRef = useRef(null)

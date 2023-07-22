@@ -34,38 +34,40 @@ const UpdataPassword = () => {
     }
 
   return (
-    <div className='text-white'>
+    <div className='grid min-h-[calc(100vh-3.5rem)] place-items-center'>
         {
-            loading?(<div>
-                Loading
-            </div>):
-            (<div>
-                <h1>choose a new Password</h1>
-                <p>almost done . Enter your new Password and youre all set .</p>
+            loading?(
+                <div className="spinner"></div>
+              ):
+            (<div className='max-w-[500px] p-4 lg:p-8'>
+                <h1 className='text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5'>choose a new Password</h1>
+                <p className='my-4 text-[1.125rem] leading-[1.625rem] text-richblack-100'>almost done . Enter your new Password and youre all set .</p>
                 <form onSubmit={handleOnSubmit}>
-                    <label>
-                        <p>New Password</p>
-                        <input type={showPassword?"text":"password"} required name='password' value={password} placeholder='password' onChange={handlerOnchange} className='w-full p-6 bg-richblack-600 text-richblack-5' />
-                    <span onClick={()=>setShowPassword((prev)=>!prev)}>
+                    <label className='relative'>
+                        <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5'>New Password <sup className="text-pink-200">*</sup></p>
+                        <input type={showPassword?"text":"password"} required name='password' value={password} placeholder='password' onChange={handlerOnchange} className='form-style w-full !pr-10' />
+                    <span onClick={()=>setShowPassword((prev)=>!prev)} className='absolute right-3 top-[38px] z-[10] cursor-pointer'>
                         {
                             showPassword?<AiFillEyeInvisible fontSize={24} />:<AiFillEye fontSize={24}/>
                         }
                     </span>
                         </label>
-                    <label>
-                        <p>Confirm Password</p>
-                        <input type={showConfirmPassword?"text":"password"} required name='confirmPassword' value={confirmPassword} onChange={handlerOnchange} placeholder='confrim password' className='w-full p-6 bg-richblack-600 text-richblack-5' />
-                    <span onClick={()=>setShowConfirmPassword((prev)=>!prev)}>
+                    <label className='relative mt-3 block'>
+                        <p className='mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5'>Confirm Password  <sup className="text-pink-200">*</sup></p>
+                        <input type={showConfirmPassword?"text":"password"} required name='confirmPassword' value={confirmPassword} onChange={handlerOnchange} placeholder='confrim password' className='form-style w-full !pr-10' />
+                    <span onClick={()=>setShowConfirmPassword((prev)=>!prev)} className='absolute right-3 top-[38px] z-[10] cursor-pointer'>
                         {
                             showConfirmPassword?<AiFillEyeInvisible fontSize={24} />:<AiFillEye fontSize={24}/>
                         }
                     </span>
                         </label>
-                        <button type='submit'>Reset Password</button>
+                        <button type='submit' className='mt-6 w-full rounded-[8px] bg-yellow-50 py-[12px] px-[12px] font-medium text-richblack-900'>Reset Password</button>
                 </form>
-                <div>
+                <div className='mt-6 flex items-center justify-between'>
                     <Link to="/login">
-                        <p>Back to Login</p>
+                        <p className='flex items-center gap-x-2 text-richblack-5'>
+                            Back to Login
+                            </p>
                         </Link>    
                     </div>
             </div>)
