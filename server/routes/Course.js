@@ -31,11 +31,12 @@ const {
 } = require("../controllers/Section")
 
 // Sub-Sections Controllers Import
-const {
-  createSubSection,
-  updateSubSection,
-  deleteSubSection,
-} = require("../controllers/SubSection")
+// const {
+//   createSubSection,
+//   updateSubSection,
+//   deleteSubSection,
+// } = require("../controllers/SubSection")
+const {createSubSection,updatedSection,updateSubSection,deleteSubSection}=require("../controllers/Subsection");
 
 // Rating Controllers Import
 const {
