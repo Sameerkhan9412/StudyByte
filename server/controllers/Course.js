@@ -3,7 +3,7 @@ const Category = require("../models/Category");
 const User = require("../models/User");
 const {uploadImageToCloudinary} = require("../utils/imageUploader");
 const Section = require("../models/Section");
-const Subsection = require("../models/SubSection");
+const SubSection = require("../models/SubSection");
 const CourseProgress =require('../models/CourseProgress')
 const { convertSecondsToDuration } = require("../utils/secToDuration")
 // Function to create a new course
@@ -147,7 +147,7 @@ exports.editCourse = async (req, res) => {
         .populate({
           path: "courseContent",
           populate: {
-            path: "subSection",
+            path: "SubSection",
           },
         })
         .exec()
@@ -198,7 +198,7 @@ exports.getCourseDetails = async (req, res) => {
         }).populate("category").populate("ratingAndReviews").populate({
             path: "courseContent",
             populate: {
-                path: "subSection",
+                path: "SubSection",
                 select: "-videoUrl"
             }
         }).exec()
@@ -216,8 +216,8 @@ exports.getCourseDetails = async (req, res) => {
 
         let totalDurationInSeconds = 0
         courseDetails.courseContent.forEach((content) => {
-            content.subSection.forEach((subSection) => {
-                const timeDurationInSeconds = parseInt(subSection.timeDuration)
+            content.SubSection.forEach((SubSection) => {
+                const timeDurationInSeconds = parseInt(SubSection.timeDuration)
                 totalDurationInSeconds += timeDurationInSeconds
             })
         })
@@ -247,7 +247,7 @@ exports.getFullCourseDetails = async (req, res) => {
         }).populate("category").populate("ratingAndReviews").populate({
             path: "courseContent",
             populate: {
-                path: "subSection"
+                path: "SubSection"
             }
         }).exec()
 
@@ -268,8 +268,8 @@ exports.getFullCourseDetails = async (req, res) => {
 
         let totalDurationInSeconds = 0
         courseDetails.courseContent.forEach((content) => {
-            content.subSection.forEach((subSection) => {
-                const timeDurationInSeconds = parseInt(subSection.timeDuration)
+            content.SubSection.forEach((SubSection) => {
+                const timeDurationInSeconds = parseInt(SubSection.timeDuration)
                 totalDurationInSeconds += timeDurationInSeconds
             })
         })
@@ -330,9 +330,9 @@ exports.getInstructorCourses = async (req, res) => {
 //         for (const sectionId of courseSections) { // Delete sub-sections of the section
 //             const section = await Section.findById(sectionId)
 //             if (section) {
-//                 const subSections = section.subSection
-//                 for (const subSectionId of subSections) {
-//                     await SubSection.findByIdAndDelete(subSectionId)
+//                 const SubSections = section.SubSection
+//                 for (const SubSectionId of SubSections) {
+//                     await SubSection.findByIdAndDelete(SubSectionId)
 //                 }
 //             }
 
@@ -374,9 +374,9 @@ exports.deleteCourse = async (req, res) => {
         // Delete sub-sections of the section
         const section = await Section.findById(sectionId)
         if (section) {
-          const subSections = section.subSection
-          for (const subSectionId of subSections) {
-            await Subsection.findByIdAndDelete(subSectionId)
+          const SubSections = section.SubSection
+          for (const SubSectionId of SubSections) {
+            await SubSection.findByIdAndDelete(SubSectionId)
           }
         }
   

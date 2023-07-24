@@ -35,9 +35,9 @@ exports.createSubSection = async (req, res) => {
       // Update the corresponding section with the newly created sub-section
       const updatedSection = await Section.findByIdAndUpdate(
         { _id: sectionId },
-        { $push: { subSection: SubSectionDetails._id } },
+        { $push: { SubSection: SubSectionDetails._id } },
         { new: true }
-      ).populate("subSection")
+      ).populate("SubSection")
   
       // Return the updated section in the response
       return res.status(200).json({ success: true, data: updatedSection })
@@ -54,10 +54,10 @@ exports.createSubSection = async (req, res) => {
   
   exports.updateSubSection = async (req, res) => {
     try {
-      const { sectionId,subSectionId, title, description } = req.body
-      const subSection = await SubSection.findById(subSectionId)
+      const { sectionId,SubSectionId, title, description } = req.body
+      const SubSection = await SubSection.findById(SubSectionId)
   
-      if (!subSection) {
+      if (!SubSection) {
         return res.status(404).json({
           success: false,
           message: "SubSection not found",
@@ -65,11 +65,11 @@ exports.createSubSection = async (req, res) => {
       }
   
       if (title !== undefined) {
-        subSection.title = title
+        SubSection.title = title
       }
   
       if (description !== undefined) {
-        subSection.description = description
+        SubSection.description = description
       }
       if (req.files && req.files.video !== undefined) {
         const video = req.files.video
@@ -77,13 +77,13 @@ exports.createSubSection = async (req, res) => {
           video,
           process.env.FOLDER_NAME
         )
-        subSection.videoUrl = uploadDetails.secure_url
-        subSection.timeDuration = `${uploadDetails.duration}`
+        SubSection.videoUrl = uploadDetails.secure_url
+        SubSection.timeDuration = `${uploadDetails.duration}`
       }
   
-      await subSection.save()
+      await SubSection.save()
 
-      const updatedSection = await Section.findById(sectionId).populate("subSection");
+      const updatedSection = await Section.findById(sectionId).populate("SubSection");
   
       return res.json({
         success: true,
@@ -101,23 +101,23 @@ exports.createSubSection = async (req, res) => {
   
   exports.deleteSubSection = async (req, res) => {
     try {
-      const { subSectionId, sectionId } = req.body
+      const { SubSectionId, sectionId } = req.body
       await Section.findByIdAndUpdate(
         { _id: sectionId },
         {
           $pull: {
-            subSection: subSectionId,
+            SubSection: SubSectionId,
           },
         }
       )
-      const subSection = await SubSection.findByIdAndDelete({ _id: subSectionId })
+      const SubSection = await SubSection.findByIdAndDelete({ _id: SubSectionId })
   
-      if (!subSection) {
+      if (!SubSection) {
         return res
           .status(404)
           .json({ success: false, message: "SubSection not found" })
       }
-      const updatedSection=await Section.findById(sectionId).populate("subSection");  
+      const updatedSection=await Section.findById(sectionId).populate("SubSection");  
       return res.json({
         success: true,
         data:updatedSection,

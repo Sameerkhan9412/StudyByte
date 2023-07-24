@@ -1,7 +1,7 @@
 // const Section = require("../models/Section");
 const Section =require("../models/Section")
 const Course = require("../models/Course");
-const Subsection = require("../models/Subsection");
+const SubSection = require("../models/SubSection");
 // const { default: SubSectionModal } = require("../../src/components/core/Dashboard/AddCourse/CourseBuilder/SubSectionModal");
 // const SubSection = require("../models/SubSection");
 // const SubSection =require("../models/SubSection");
@@ -35,7 +35,7 @@ exports.createSection = async (req, res) => {
 			.populate({
 				path: "courseContent",
 				populate: {
-					path: "subSection",
+					path: "SubSection",
 				},
 			})
 			.exec();
@@ -70,7 +70,7 @@ exports.updateSection = async (req, res) => {
 		.populate({
 			path:"courseContent",
 			populate:{
-				path:"subSection",
+				path:"SubSection",
 			},
 		})
 		.exec();
@@ -109,7 +109,7 @@ exports.deleteSection = async (req, res) => {
 		}
 
 		//delete sub section
-		await Subsection.deleteMany({_id: {$in: section.subSection}});
+		await SubSection.deleteMany({_id: {$in: section.SubSection}});
 		await Section.findByIdAndDelete(sectionId);
 		console.log("secton deleted successful");
 
@@ -117,7 +117,7 @@ exports.deleteSection = async (req, res) => {
 		const course = await Course.findById(courseId).populate({
 			path:"courseContent",
 			populate: {
-				path: "subSection"
+				path: "SubSection"
 			}
 		})
 		.exec();
