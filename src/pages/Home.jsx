@@ -2,7 +2,6 @@ import React from 'react'
 import {FaArrowRight} from "react-icons/fa"
 import {Link} from "react-router-dom"
 import HighlightText from '../components/core/HomePage/HighlightText'
-
 import CTAButton from "../components/core/HomePage/Button"
 import Banner from "../assets/Images/banner.mp4"
 import CodeBlocks from "../components/core/HomePage/CodeBlocks"
@@ -12,10 +11,9 @@ import InstructorSection from '../components/core/HomePage/InstructorSection'
 import Footer from '../components/common/Footer'
 import ExploreMore from '../components/core/HomePage/ExploreMore'
 import ReviewSlider from '../components/common/ReviewSlider'
-
 const Home = () => {
   return (
-    <div>
+    <div className='mt-9'>
       {/*Section1  */}
       <div className='relative mx-auto flex flex-col w-11/12 max-w-maxContent items-center 
       text-white justify-between'>
@@ -24,15 +22,15 @@ const Home = () => {
             <div className=' group p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200
             transition-all duration-200 hover:scale-95 w-fit'>
                 <div className='flex flex-row items-center gap-2 rounded-full px-10 py-[5px]
-                transition-all duration-200 group-hover:bg-richblack-900'>
-                    <p>Become an Instructor</p>
+                transition-all duration-200 group-hover:bg-richblack-900  '>
+                    <p> Become an Instructor</p>
                     <FaArrowRight />
                 </div>
             </div>
 
         </Link>
 
-        <div className='text-center text-4xl font-semibold mt-7'>
+        <div className='text-center font-semibold mt-7 text-2xl md:text-4xl'>
             Empower Your Future with
             <HighlightText text={"Coding Skills"} />
         </div>
@@ -51,20 +49,19 @@ const Home = () => {
             </CTAButton>
         </div>
 
-        <div className='mx-3 my-12 shadow-lg'>
+        <div className='mx-3 my-12 drop-shadow-2xl  ;'>
             <video
             muted
             loop
-            autoPlay
-            >
+            autoPlay className='shadow-[4px_9px_7px_8px_white]'>
             <source src={Banner}/>
             </video>
         </div>
 
         {/* Code Section 1 */}
-        <div>
+        <div className='my-6'>
             <CodeBlocks 
-                position={"lg:flex-row"}
+                position={"md:flex-row items-center "}
                 heading={
                     <div className='text-4xl font-semibold'>
                         Unlock Your
@@ -98,12 +95,13 @@ const Home = () => {
                 {/* Code Section 2 */}
         <div>
             <CodeBlocks 
-                position={"lg:flex-row-reverse"}
+                position={"md:flex-row-reverse items-center"}
                 heading={
-                    <div className='text-4xl font-semibold'>
-                        Unlock Your
-                        <HighlightText text={"coding potential"}/>
-                        with our online courses
+                    <div className='text-4xl font-semibold '>
+                        Start 
+                        <HighlightText text={"coding in "}/>
+                        <br/>
+                        <HighlightText text={"seconds"}/>
                     </div>
                 }
                 subheading = {
@@ -124,7 +122,7 @@ const Home = () => {
                     }
                 }
 
-                codeblock={`<!DOCTYPE html>\n<html>\n<head>\n<title>Example</title>\n<linkrel="stylesheet"href="styles.css">\n</head>\n<body>\n<ahref="/">Header</a>\n</body>\n</html>`}
+                codeblock={`import React from "react";\n import CTAButton from "./Button";\n import TypeAnimation from "react-type";\n import {FaArrowRight} from "react-icons/fa";\n \n const Home=()=>{\n return (\n <div> Home  </div>\n )\n }`}
                 codeColor={"text-yellow-25"}
             />
         </div>
@@ -160,13 +158,13 @@ const Home = () => {
 
             <div className='w-11/12 mx-auto flex max-w-maxContent flex-col items-center justify-between gap-7'>
 
-                <div className='flex flex-row gap-10 mb-10 mt-[100px]'>
-                    <div className='text-4xl font-semibold w-[45%]'>
+                <div className='flex flex-row gap-10 mb-10 mt-[100px] max-sm:flex-col w-[90%] max-sm:mt-[30px]'>
+                    <div className=' font-semibold w-[45%] text-4xl max-sm:w-[100%]'>
                         Get the Skills you need for a
                         <HighlightText text={"Job that is in demand"} />
                     </div>
 
-                    <div className='flex flex-col gap-8 w-[40%] items-start'>
+                    <div className='flex flex-col gap-8 w-[40%] items-start max-sm:w-[100%] text-center'>
                     <div className='text-[16px]'>
                     The modern StudyByte is the dictates its own terms. Today, to be a competitive specialist requires more than professional skills.
                     </div>
@@ -197,11 +195,11 @@ const Home = () => {
 
             <InstructorSection />
 
-            <h2 className='font-semibold text-4xl text-center mt-10'>review from Other Learners</h2>
             {/* Review Slider here */}
-            <ReviewSlider/>
       </div>
 
+            <h2 className='font-semibold text-4xl text-center mt-10 text-white'>Review from Other Learners</h2>
+            <ReviewSlider/>
 
       {/*Footer */}
       <Footer />

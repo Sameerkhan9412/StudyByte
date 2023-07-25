@@ -23,17 +23,17 @@ const LearningLanguageSection = () => {
                 <img 
                     src = {know_your_progress}
                     alt = "KNowYourProgressImage"
-                    className='object-contain -mr-32 '
-                />
+                    className='object-contain -mr-32 hover:animate-pulse '
+                  />
                 <img 
                     src = {compare_with_others}
                     alt = "KNowYourProgressImage"
-                    className='object-contain'
+                    className='object-contain hover:animate-pulse'
                 />
                 <img 
                     src = {plan_your_lesson}
                     alt = "KNowYourProgressImage"
-                    className='object-contain -ml-36'
+                    className='object-contain -ml-36 hover:animate-pulse'
                 />
             </div>
 
