@@ -27,7 +27,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
       )
       const currentSubSectionIndx = courseSectionData?.[
         currentSectionIndx
-      ]?.subSection.findIndex((data) => data._id === subSectionId)
+      ]?.SubSection.findIndex((data) => data._id === subSectionId)
       const activeSubSectionId =
         courseSectionData[currentSectionIndx]?.subSection?.[
           currentSubSectionIndx
@@ -79,9 +79,9 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
                   {course?.sectionName}
                 </div>
                 <div className="flex items-center gap-3">
-                  {/* <span className="text-[12px] font-medium">
-                    Lession {course?.subSection.length}
-                  </span> */}
+                  <span className="text-[12px] font-medium">
+                    Lession {course?.SubSection.length}
+                  </span>
                   <span
                     className={`${
                       activeStatus === course?.sectionName
@@ -97,7 +97,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
               {/* Sub Sections */}
               {activeStatus === course?._id && (
                 <div className="transition-[height] duration-500 ease-in-out">
-                  {course.subSection.map((topic, i) => (
+                  {course.SubSection.map((topic, i) => (
                     <div
                       className={`flex gap-3  px-5 py-2 ${
                         videoBarActive === topic._id

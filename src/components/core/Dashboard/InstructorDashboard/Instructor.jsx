@@ -40,7 +40,7 @@ const Instructor = () => {
             console.log("this is courses",courses)
         }
         {
-            loading?<div>Spinner</div>:
+            loading?<div>custom-loader</div>:
             courses.length>0?(
                 <div>
                 <div>

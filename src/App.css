@@ -44,13 +44,43 @@ details > summary::-webkit-details-marker {
 }
 
 /* https://10015.io/tools/css-loader-generator */
-.spinner {
+/* .custom-loader {
   width: 56px;
   height: 56px;
   border-radius: 50%;
   border: 9px solid #f1f2ff;
-  animation: spinner-bulqg1 0.8s infinite linear alternate,
-    spinner-oaa3wk 1.6s infinite linear;
+  animation: custom-loader-bulqg1 0.8s infinite linear alternate,
+    custom-loader-oaa3wk 1.6s infinite linear;
+} */
+
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  display: grid;
+}
+.custom-loader::before,
+.custom-loader::after {    
+  content:"";
+  grid-area: 1/1;
+  --c: radial-gradient(farthest-side,#766DF4 92%,#0000);
+  background: 
+    var(--c) 50%  0, 
+    var(--c) 50%  100%, 
+    var(--c) 100% 50%, 
+    var(--c) 0    50%;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  animation: s2 1s infinite;
+}
+.custom-loader::before {
+margin:4px;
+filter:hue-rotate(45deg);
+background-size: 8px 8px;
+animation-timing-function: linear
+}
+
+@keyframes s2{ 
+100%{transform: rotate(.5turn)}
 }
 
 .codeblock1 {
@@ -103,7 +133,7 @@ details > summary::-webkit-details-marker {
   /* background-size: contain; */
 }
 
-@keyframes spinner-bulqg1 {
+@keyframes custom-loader-bulqg1 {
   0% {
     clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
   }
@@ -181,7 +211,7 @@ details > summary::-webkit-details-marker {
   }
 }
 
-@keyframes spinner-oaa3wk {
+@keyframes custom-loader-oaa3wk {
   0% {
     transform: scaleY(1) rotate(0deg);
   }

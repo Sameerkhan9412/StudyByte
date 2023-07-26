@@ -7,12 +7,14 @@ import RatingStars from '../../common/RatingStars';
 import { RxCross2 } from "react-icons/rx"
 import IconBtn from '../../common/IconBtn';
 import { createRating } from '../../../services/operations/courseDetailsAPI';
+import ReactStars from "react-rating-stars-component"
 
 
 const CourseReviewModel = ({setReviewModal}) => {
     const {user}=useSelector((state)=>state.profile);
     const {token}=useSelector((state)=>state.auth)
     const {courseEntireData}=useSelector((state)=>state.viewCourse);
+    const [ratingValue,setRatingValue]=useState(0);
 
     const {
         register,
@@ -26,11 +28,11 @@ const CourseReviewModel = ({setReviewModal}) => {
         setValue("courseRating",0);
     },[])
 
-    const ratingChanged=(newRating)=>{
-        setValue("CourseRating",newRating);
-    }
-
-    const onSubmit=async(data)=>{
+    const ratingChanged = (newRating) => {
+        // console.log(newRating)
+        setValue("courseRating", newRating)
+      }
+      const onSubmit=async(data)=>{
         await createRating(
             {
                 courseId:courseEntireData._id,
@@ -41,6 +43,18 @@ const CourseReviewModel = ({setReviewModal}) => {
         );
         setReviewModal(false)
     }
+    // const thirdExample = {
+    //     size: 40,
+    //     count: 7,
+    //     isHalf: false,
+    //     value: 4,
+    //     color: "blue",
+    //     activeColor: "red",
+    //     onChange: newValue => {
+    //       console.log(`Example 3: new value is ${newValue}`);
+    //     }
+    //   };
+      
   return (
     <div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
         <div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
@@ -61,7 +75,8 @@ const CourseReviewModel = ({setReviewModal}) => {
                     </div>
                 </div>
                 <form  onSubmit={handleSubmit(onSubmit)} className='mt-6 flex flex-col items-center'>
-                    <RatingStars count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />
+                    {/* <RatingStars count={5} onClick={ratingChanged} size={24} activeColor="#ffd700" /> */}
+                        <ReactStars   size={24} isHalf={false} count={5} value={ratingValue} color="white" activeColor="#ffd700" onChange={ratingChanged} />
                     <div>
                         <label htmlFor="courseExperience" className="text-sm text-richblack-5"> 
                             Add Your Experiences

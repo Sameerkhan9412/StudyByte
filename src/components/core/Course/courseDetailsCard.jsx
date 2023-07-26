@@ -112,23 +112,7 @@ function CourseDetailsCard({ course, setConfirmationModal }) {
               30-Day Money-Back Guarantee
             </p>
           </div>
-
-          <div className={``}>
-            <p className={`my-2 text-xl font-semibold `}>
-              This Course Includes :
-            </p>
-            <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">
-              {course?.instructions?.map((item, i) => {
-                return (
-                  <p className={`flex gap-2`} key={i}>
-                    <BsFillCaretRightFill />
-                    <span>{item}</span>
-                  </p>
-                )
-              })}
-            </div>
-          </div>
-          <div className="text-center">
+<div className="text-center">
             <button
               className="mx-auto flex items-center gap-2 py-6 text-yellow-100 "
               onClick={handleShare}
