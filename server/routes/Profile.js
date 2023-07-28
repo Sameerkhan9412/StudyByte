@@ -20,8 +20,9 @@ router.get("/getUserDetails", auth, getAllUserDetails)
 // Get Enrolled Courses
 router.get("/getEnrolledCourses", auth, getEnrolledCourses)
 router.get("/instructorDashboard",auth,isInstructor,instructorDashboard)
+router.put("/updateDisplayPicture", auth, updateDisplayPicture)
 
 
-router.get("/updateDisplayPicture", auth, getAllUserDetails)
+// router.get("/updateDisplayPicture", auth, getAllUserDetails)
 
 module.exports = router

@@ -90,6 +90,7 @@ exports.getAllUserDetails = async (req, res) => {
 };
 
 exports.updateDisplayPicture = async (req, res) => {
+	console.log("hiiiiiiiiiiiiiiiiiii")
     try {
       const displayPicture = req.files.displayPicture
       const userId = req.user.id

@@ -35,6 +35,34 @@ body {
   visibility: visible;
 }
 
+.mobile-nav{
+  /* border: 3px solid red; */
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap:5px;
+  position: absolute;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100vh;
+  width: 100vw;
+  font-size: 1.2rem;
+  background-color: black;
+  z-index: -1;
+  transition: all 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+.hideNav{
+  transform: translateX(0%);
+}
+.hello{
+  background-color: red;
+  border: ye;
+}
 /* Hide default styling of details/summary */
 details > summary {
   list-style: none;
