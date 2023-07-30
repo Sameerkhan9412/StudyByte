@@ -8,7 +8,7 @@ const Course = require("../models/Course");
 // Method for updating a profile
 exports.updateProfile = async (req, res) => {
 	try {
-		const { dateOfBirth = "", about = "", contactNumber } = req.body;
+		const { dateOfBirth = "", about = "",gender="", contactNumber } = req.body;
 		const id = req.user.id;
 
 		// Find the profile by id
@@ -18,6 +18,7 @@ exports.updateProfile = async (req, res) => {
 		// Update the profile fields
 		profile.dateOfBirth = dateOfBirth;
 		profile.about = about;
+		profile.gender=gender;
 		profile.contactNumber = contactNumber;
 
 		// Save the updated profile
