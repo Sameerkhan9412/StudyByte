@@ -44,16 +44,13 @@ const Navbar = () => {
     const matchRoute = (route) => {
         return matchPath({path:route}, location.pathname);
     }
-
-    // const hideOrShow=()=>{
-    //     console.log("hello world");
-    //     const comp=document.getElementById("mobileNav");
-    //     comp.style.display="hidden";
-
-    // }
     const showHide=()=>{
         let  navId=document.getElementById("mobileNav");
+        let menuBtn=document.getElementById("menuBtn");
+        let crossBtn=document.getElementById("crossBtn");
         navId.classList.toggle("hideNav");
+        menuBtn.classList.toggle("hideMenuBtn");
+        crossBtn.classList.toggle("hideMenuBtn");
     }
   return (
     <div className={`flex h-12 items-center justify-center border-b-[1px] border-b-richblack-700 ${
@@ -68,7 +65,7 @@ const Navbar = () => {
 
       {/* Nav Links */}
       <nav className='max-md:visible '>
-        <ul className='flex gap-x-6 text-richblack-25 mobile-nav  ' id='mobileNav' >
+        <ul className='flex gap-x-6 text-richblack-25 mobile-nav w-[90%]  ' id='mobileNav' >
         {
             NavbarLinks.map( (link, index) => (
                  <li key={index}>
@@ -157,7 +154,7 @@ const Navbar = () => {
         </div>
 
         </ul>
-        <ul className='flex gap-x-6 text-richblack-25 max-md:hidden ' id='mobileNav' >
+        <ul className='flex gap-x-6 text-richblack-25 max-md:hidden  ' id='mobileNav' >
         {
             NavbarLinks.map( (link, index) => (
                  <li key={index}>
@@ -248,9 +245,9 @@ const Navbar = () => {
             }
             
         </div>
-        <button className="mr-4 md:hidden" onClick={showHide} >
-          <AiOutlineMenu fontSize={24} fill="#AFB2BF" id='menuBtn' className='visible'  />
-          <AiOutlineClose fontSize={24} fill="#AFB2BF" id='crossBtn' className='hidden'  />
+        <button className="mr-4 text-2xl md:hidden" onClick={showHide}  >
+          <AiOutlineMenu fontSize={24} fill="#AFB2BF" id='menuBtn'  className='text-2xl'  />
+          <AiOutlineClose fontSize={24} fill="#AFB2BF" id='crossBtn' className='hideMenuBtn text-3xl'  />
         </button>
 
       </div>

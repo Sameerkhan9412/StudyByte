@@ -59,9 +59,12 @@ body {
 .hideNav{
   transform: translateX(0%);
 }
-.hello{
-  background-color: red;
-  border: ye;
+.hideMenuBtn{
+  display: none;
+  
+}
+.showMenuBtn{
+  display: visible;
 }
 /* Hide default styling of details/summary */
 details > summary {

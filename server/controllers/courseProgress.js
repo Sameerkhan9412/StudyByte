@@ -6,20 +6,21 @@ const SubSection = require("../models/SubSection");
 
 
 exports.updateCourseProgress = async(req,res) => {
-    const {courseId, SubSectionId} = req.body;
-    console.log("sksksks",SubSectionId)
+    const {courseId, subSectionId} = req.body;
+    console.log("sksksks",subSectionId)
+    console.log("sksksks",courseId)
     const userId = req.user.id;
-
+    console.log(userId)
     try{
         //check if the SubSection is valid
-        const SubSection = await SubSection.findById(SubSectionId);
-
+        
+        
+        const SubSection = await SubSection.findById(subSectionId);
+        console.log("this is subsection",SubSection);
         console.log("SubSection Validation Done");
         if(!SubSection) {
             return res.status(404).json({error:"Invalid SubSection"});
         }
-
-
         //check for old entry 
         let courseProgress = await CourseProgress.findOne({
             courseID:courseId,
@@ -34,7 +35,7 @@ exports.updateCourseProgress = async(req,res) => {
         else {
             console.log("Course Progress Validation Done");
             //check for re-completing video/SubSection
-            if(courseProgress.completedVideos.includes(SubSectionId)) {
+            if(courseProgress.completedVideos.includes(subSectionId)) {
                 return res.status(400).json({
                     error:"SubSection already completed",
                 });
