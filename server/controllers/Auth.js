@@ -227,12 +227,13 @@ exports.sendotp = async (req, res) => {
 
 // Controller for Changing Password
 exports.changePassword = async (req, res) => {
+	console.log("hello mt nae");
 	try {
 		// Get user data from req.user
 		const userDetails = await User.findById(req.user.id);
-
+		console.log(userDetails);
 		// Get old password, new password, and confirm new password from req.body
-		const { oldPassword, newPassword, confirmNewPassword } = req.body;
+		const { oldPassword, newPassword, confirmPassword } = req.body;
 
 		// Validate old password
 		const isPasswordMatch = await bcrypt.compare(
@@ -247,7 +248,7 @@ exports.changePassword = async (req, res) => {
 		}
 
 		// Match new password and confirm new password
-		if (newPassword !== confirmNewPassword) {
+		if (newPassword !== confirmPassword) {
 			// If new password and confirm new password do not match, return a 400 (Bad Request) error
 			return res.status(400).json({
 				success: false,
@@ -282,7 +283,7 @@ exports.changePassword = async (req, res) => {
 				error: error.message,
 			});
 		}
-
+		user.token=NULL;
 		// Return success response
 		return res
 			.status(200)

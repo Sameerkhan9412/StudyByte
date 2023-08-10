@@ -13,6 +13,7 @@ export default function UpdatePassword() {
 
   const [showOldPassword, setShowOldPassword] = useState(false)
   const [showNewPassword, setShowNewPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const {
     register,
@@ -21,7 +22,8 @@ export default function UpdatePassword() {
   } = useForm()
 
   const submitPasswordForm = async (data) => {
-    // console.log("password Data - ", data)
+    console.log("password Data - ", data)
+    console.log("password Data - ", token)
     try {
       await changePassword(token, data)
     } catch (error) {
@@ -88,6 +90,34 @@ export default function UpdatePassword() {
               {errors.newPassword && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
                   Please enter your New Password.
+                </span>
+              )}
+            </div>
+            <div className="relative flex flex-col gap-2 lg:w-[48%]">
+              <label htmlFor="confirmPassword" className="lable-style">
+                Confirm Password
+              </label>
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Enter confirm Password"
+                className="form-style"
+                {...register("confirmPassword", { required: true })}
+              />
+              <span
+                onClick={() => setShowConfirmPassword((prev) => !prev)}
+                className="absolute right-3 top-[38px] z-[10] cursor-pointer"
+              >
+                {showConfirmPassword ? (
+                  <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
+                ) : (
+                  <AiOutlineEye fontSize={24} fill="#AFB2BF" />
+                )}
+              </span>
+              {errors.confirmPassword && (
+                <span className="-mt-1 text-[12px] text-yellow-100">
+                  Please enter your confirm Password.
                 </span>
               )}
             </div>

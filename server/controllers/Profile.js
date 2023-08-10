@@ -7,13 +7,14 @@ const { convertSecondsToDuration } = require("../utils/secToDuration");
 const Course = require("../models/Course");
 // Method for updating a profile
 exports.updateProfile = async (req, res) => {
+	const id = req.user.id;
+	const userDetails = await User.findById(id);
+	const profile = await Profile.findById(userDetails.additionalDetails);
+	console.log(profile);
 	try {
 		const { dateOfBirth = "", about = "", contactNumber } = req.body;
-		const id = req.user.id;
 
 		// Find the profile by id
-		const userDetails = await User.findById(id);
-		const profile = await Profile.findById(userDetails.additionalDetails);
 
 		// Update the profile fields
 		profile.dateOfBirth = dateOfBirth;

@@ -36,8 +36,8 @@ function ReviewSlider() {
   // console.log(reviews)
 
   return (
-    <div className="text-white mb-10 mt-5">
-      <div className="max-h-max max-w-maxContent">
+    <div className="text-white my-20 mx-4 ">
+      <div className="max-h-max max-w-maxContent flex items-center overflow-hidden">
         <Swiper
           slidesPerView={4}
           spaceBetween={24}
@@ -52,7 +52,8 @@ function ReviewSlider() {
         >
           {
           reviews.map((review, i) => (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={i} className="bg-richblack-800 p-2 text-sm rounded-md">
+                <div className="flex items-center gap-2  ">
                     <img
                       src={
                         review?.user?.image
@@ -62,10 +63,13 @@ function ReviewSlider() {
                       alt="profile Pic"
                       className="h-9 w-9 object-cover rounded-full"
                     />
-                    <p >{`${review?.user?.firstName} ${review?.user?.lastName}`}</p>
-                      <p>
+                    <div>
+                    <p className="" >{`${review?.user?.firstName} ${review?.user?.lastName}`}</p>
+                      <p className="text-richblack-600 font-bold">
                         {review?.course?.courseName}
                       </p>
+                    </div>
+                </div>
                   <p>{review?.review.split(" ").length > truncateWords
                       ? `${review?.review
                           .split(" ")
