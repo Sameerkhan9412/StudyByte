@@ -10,9 +10,8 @@ const InstructorChart = ({courses}) => {
     const getRandomColors=(numColors)=>{
         const colors=[];
         for(let i=0;i<numColors;i++){
-            const color=`rgb[${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)}]`;
+            const color=`rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
             colors.push(color);
-            console.log("genrated colot is ",color);
         }
         return colors; 
     }
@@ -23,7 +22,7 @@ const InstructorChart = ({courses}) => {
         datasets:[
             {
                 data:courses.map((course)=>course.totalStudentsEnrolled),
-                backgroundColor:getRandomColors(3),
+                backgroundColor:getRandomColors(courses.length),
             }
         ]
     }
@@ -41,23 +40,23 @@ const InstructorChart = ({courses}) => {
 
     // create opptions 
     const options={
-
+      
     }
 
 
 
 
   return (
-    <div>
-         <p>Visualise</p>
-         <div className='flex gap-x-5'>
+    <div className='p-4 m-4  min-h-[60vh] relative bg-richblack-700 w-[80%]'>
+         <p className='text-lg'>Visualise</p>
+         <div className='flex gap-x-5 px-2 py-1 ' >
             <button onClick={()=>setCurrChart("students")}>student</button>
             <button onClick={()=>setCurrChart("income")}>Income</button>
          </div>
-         <div>
+         <div  className='  flex'>
             <Pie data={currChart==="students"? chartDataForStudents :chartDataForIncome}
-            options={options}
-            />
+            options={ {maintainAspectRatio: false}  } 
+             width={"300px"} height={"300px"}  />
          </div>
     </div>
   )
