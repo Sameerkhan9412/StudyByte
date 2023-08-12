@@ -100,7 +100,7 @@ exports.deleteSection = async (req, res) => {
 			}
 		})
 		const section = await Section.findById(sectionId);
-		console.log(sectionId, courseId);
+		// console.log(sectionId, courseId);
 		if(!section) {
 			return res.status(404).json({
 				success:false,
@@ -111,7 +111,7 @@ exports.deleteSection = async (req, res) => {
 		//delete sub section
 		await SubSection.deleteMany({_id: {$in: section.SubSection}});
 		await Section.findByIdAndDelete(sectionId);
-		console.log("secton deleted successful");
+		// console.log("secton deleted successful");
 
 		//find the updated course and return 
 		const course = await Course.findById(courseId).populate({

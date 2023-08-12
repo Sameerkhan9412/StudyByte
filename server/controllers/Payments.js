@@ -10,7 +10,7 @@ const crypto =require("crypto");
 exports.capturePayment = async (req, res) => {
     const {courses} = req.body;
     const userId = req.userId;
-    console.log("my used id",userId);
+    // console.log("my used id",userId);
     if (courses.length === 0) {
         return res.json({success: false, message: "Please provide course Id"})
     }
@@ -19,7 +19,7 @@ exports.capturePayment = async (req, res) => {
         let course;
         try {
             course = await Course.findById(course_id);
-            console.log("PRINTIND COURSE ID",course_id)
+            // console.log("PRINTIND COURSE ID",course_id)
             if (! course) {
                 return res.status(200).json({success: false, message: "could not find the course"})
             }
@@ -104,7 +104,7 @@ const enrolledStudents = async (courses, userId, res) => {
             `successfully Enrolled into ${enrolledCourse.courseName}`,
             courseEnrollmentEmail(enrolledCourse.courseName,`${enrolledStudent.firstName}`+ " "+`${enrolledStudent.lastName}` )
             )
-            console.log("Email Sent successfully",emailResponse.response);
+            // console.log("Email Sent successfully",emailResponse.response);
     }
 }
 catch(error){

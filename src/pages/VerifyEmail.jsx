@@ -79,7 +79,10 @@ const VerifyEmail = () => {
         <button onClick={() => dispatch(sendOtp(signupData.email,navigate))} className="flex items-center text-blue-100 gap-x-2">
           Resend It
         </button>
+        <span className='text-yellow-100'>please check spam folder if you not recieve an mail.</span>
+
       </div> 
+      
     )}
  </div>
 );

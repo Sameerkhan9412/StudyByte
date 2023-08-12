@@ -36,7 +36,6 @@ export async function buyCourse(token,courses,userDetails,navigate,dispatch){
             throw new Error(orderResponse.data.message);
         }
         // options
-        console.log("hjh",orderResponse)
         const options={
             key:process.env.RAZORPAY_KEY,
             currency:orderResponse.data.message.currency,

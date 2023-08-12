@@ -16,7 +16,7 @@ const {
 
 export function sendOtp(email, navigate) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SENDOTP_API, {
@@ -38,7 +38,7 @@ export function sendOtp(email, navigate) {
       toast.error("Could Not Send OTP")
     }
     dispatch(setLoading(false))
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
   }
 }
 
@@ -53,7 +53,7 @@ export function signUp(
   navigate
 ) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", SIGNUP_API, {
@@ -75,17 +75,17 @@ export function signUp(
       navigate("/login")
     } catch (error) {
       console.log("SIGNUP API ERROR............", error)
-      toast.error("Signup Failed")
-      navigate("/signup")
+      toast.error("wrong otp")
+      // navigate("/signup")
     }
     dispatch(setLoading(false))
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
   }
 }
 
 export function login(email, password, navigate) {
   return async (dispatch) => {
-    const toastId = toast.loading("Loading...")
+    // const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("POST", LOGIN_API, {
@@ -113,7 +113,7 @@ export function login(email, password, navigate) {
       toast.error("Login Failed")
     }
     dispatch(setLoading(false))
-    toast.dismiss(toastId)
+    // toast.dismiss(toastId)
   }
 }
 
@@ -148,7 +148,7 @@ export function getPasswordResetToken(email , setEmailSent) {
     }
     catch(error) {
       console.log("RESET PASSWORD TOKEN Error", error);
-      toast.error("Failed to send email for resetting password");
+      toast.error("please create your account first");
     }
     dispatch(setLoading(false));
   }

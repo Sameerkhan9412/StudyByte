@@ -47,7 +47,7 @@ exports.createCourse = async (req, res) => {
         }
         // Upload the Thumbnail to Cloudinary
         const thumbnailImage = await uploadImageToCloudinary(thumbnail, process.env.FOLDER_NAME);
-        console.log(thumbnailImage);
+        // console.log(thumbnailImage);
         // Create a new course with the given details
         const newCourse = await Course.create({
             courseName,
@@ -89,7 +89,7 @@ exports.createCourse = async (req, res) => {
         )
         
         // Return the new course and a success message
-        console.log("this is updated cat",categoryDetails2)
+        // console.log("this is updated cat",categoryDetails2)
         res.status(200).json({success: true, data: newCourse, message: "Course Created Successfully"});
     } catch (error) { // Handle any errors that occur during the creation of the course
         console.error(error);
@@ -103,7 +103,7 @@ exports.editCourse = async (req, res) => {
       const { courseId } = req.body
       const updates = req.body
       const course = await Course.findById(courseId)
-      console.log(course)
+      // console.log(course)
   
       if (!course) {
         return res.status(404).json({ error: "Course not found" })
@@ -111,7 +111,7 @@ exports.editCourse = async (req, res) => {
   
       // If Thumbnail Image is found, update it
       if (req.files) {
-        console.log("thumbnail update")
+        // console.log("thumbnail update")
         const thumbnail = req.files.thumbnailImage
         const thumbnailImage = await uploadImageToCloudinary(
           thumbnail,
@@ -253,7 +253,7 @@ exports.getFullCourseDetails = async (req, res) => {
 
         let courseProgressCount = await CourseProgress.findOne({courseID: courseId, userId: userId})
 
-        console.log("courseProgressCount : ", courseProgressCount)
+        // console.log("courseProgressCount : ", courseProgressCount)
 
         if (! courseDetails) {
             return res.status(400).json({success: false, message: `Could not find course with id: ${courseId}`})

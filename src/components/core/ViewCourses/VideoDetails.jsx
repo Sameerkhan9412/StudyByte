@@ -32,19 +32,19 @@ const VideoDetails = () => {
         navigate(`/dashboard/enrolled-courses`)
       } else {
         // console.log("courseSectionData", courseSectionData)
-        console.log("course section data",courseSectionData)
+        // console.log("course section data",courseSectionData)
         const filteredData = courseSectionData.filter(
           (course) => course._id === sectionId
         )
-        console.log("hee is dsection id ",sectionId)
-        console.log("fierdata is here",filteredData);
+        // console.log("hee is dsection id ",sectionId)
+        // console.log("fierdata is here",filteredData);
         const filteredVideoData = filteredData?.[0]?.SubSection.filter(
           (data) => data._id === subSectionId
         )
-        console.log("subsection id is here",subSectionId);
-        console.log("filteredVideoData", filteredVideoData)
+        // console.log("subsection id is here",subSectionId);
+        // console.log("filteredVideoData", filteredVideoData)
         setVideoData(filteredVideoData[0])
-        console.log("video data 2",videoData)
+        // console.log("video data 2",videoData)
         setPreviewSource(courseEntireData.thumbnail)
         setVideoEnded(false)
       }
@@ -162,7 +162,7 @@ const VideoDetails = () => {
 
   const handleLectureCompletion = async () => {
     setLoading(true)
-    console.log("this is subsecionid ",subSectionId)
+    // console.log("this is subsecionid ",subSectionId)
     const res = await markLectureAsComplete(
       { courseId: courseId, subSectionId: subSectionId },
       token

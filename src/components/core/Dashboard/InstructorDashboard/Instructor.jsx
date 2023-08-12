@@ -19,8 +19,8 @@ const Instructor = () => {
       // pending
       const instructorApiData = await getInstructorData(token);
       const result = await fetchInstructorCourses(token);
-      console.log("mt new course ",result);
-      console.log(instructorApiData);
+      // console.log("mt new course ",result);
+      // console.log(instructorApiData);
       if (instructorApiData.length) {
         setInstructorData(instructorApiData);
       }
@@ -92,9 +92,9 @@ const Instructor = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <p>You have not created any courses yet</p>
-          <Link to="/dashboard/add-Course">Create a Course</Link>
+        <div className="text-lg flex flex-col justify-center items-center ">
+          <p className=" ">You have not created any courses yet</p>
+          <Link to="/dashboard/add-Course" className="text-yellow-200 border-b-2">Create a Course</Link>
         </div>
       )}
     </div>

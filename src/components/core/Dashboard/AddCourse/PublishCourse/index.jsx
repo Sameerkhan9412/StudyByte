@@ -19,7 +19,7 @@ export default function PublishCourse() {
 
     useEffect(() => {
         if (course ?. status === COURSE_STATUS.PUBLISHED) {
-            console.log("samer khan", course)
+            // console.log("samer khan", course)
             setValue("public", true)
         }
     }, [])
@@ -47,7 +47,6 @@ export default function PublishCourse() {
         formData.append("status", courseStatus)
         setLoading(true)
         const result = await editCourseDetails(formData, token)
-        console.log("hello everyone")
         if (result) {
             goToCourses()
         }

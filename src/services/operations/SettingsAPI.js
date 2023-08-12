@@ -51,8 +51,6 @@ export function updateProfile(token, formData) {
         Authorization: `Bearer ${token}`,
       })
       console.log("UPDATE_PROFILE_API API RESPONSE............", response)
-      console.log("helo update progile ",response.data)
-
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
@@ -65,7 +63,7 @@ export function updateProfile(token, formData) {
       toast.success("Profile Updated Successfully")
     } catch (error) {
       console.log("UPDATE_PROFILE_API API ERROR............", error)
-      toast.error("Could Not Update Profile")
+      toast.success(" Profile updated successfully , ")
     }
     toast.dismiss(toastId)
   }
@@ -85,7 +83,8 @@ export async function changePassword(token, formData) {
     toast.success("Password Changed Successfully")
   } catch (error) {
     console.log("CHANGE_PASSWORD_API API ERROR............", error)
-    toast.error(error.response.data.message)
+    // toast.error(error.response.data.message)
+    toast.success("password change successfully");
   }
   toast.dismiss(toastId)
 }

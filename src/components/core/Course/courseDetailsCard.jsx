@@ -25,7 +25,6 @@ function CourseDetailsCard({ course, setConfirmationModal }) {
   const dispatch = useDispatch()
 
   const handledBuyCourse = () => {
-    console.log("yes if a mlcick")
     if (token) {
       buyCourse(token, [courseId], user, navigate, dispatch)
       return
@@ -57,9 +56,9 @@ function CourseDetailsCard({ course, setConfirmationModal }) {
       return
     }
     if (token) {
-      console.log("this is the course ",course)
+      // console.log("this is the course ",course)
       dispatch(addToCart(course))
-      console.log("dispatching add to cart")
+      // console.log("dispatching add to cart")
       return
     }
     setConfirmationModal({

@@ -10,9 +10,10 @@ import { categories } from '../../services/apis'
 import { useState } from 'react'
 import {BsChevronDown} from "react-icons/bs"
 import { AiOutlineMenu,AiOutlineClose, AiOutlineShoppingCart } from "react-icons/ai"
+import Spinner from './Spinner'
 
 const Navbar = () => {
-    console.log("Printing base url: ",process.env.REACT_APP_BASE_URL);
+    // console.log("Printing base url: ",process.env.REACT_APP_BASE_URL);
     const {token} = useSelector( (state) => state.auth );
     const {user} = useSelector( (state) => state.profile );
     const {totalItems} = useSelector( (state) => state.cart )
@@ -24,9 +25,9 @@ const Navbar = () => {
     const fetchSublinks = async() => {
         try{
             const result = await apiConnector("GET", categories.CATEGORIES_API);
-            console.log("Printing Sublinks result:" , result);
+            // console.log("Printing Sublinks result:" , result);
             setsubLinks(result.data.data);
-            console.log(result.data.data)
+            // console.log(result.data.data)
         }
         catch(error) {
             console.log("Could not fetch the category list");
@@ -35,7 +36,7 @@ const Navbar = () => {
 
 
     useEffect( () => {
-        console.log("PRINTING TOKEN", token);
+        // console.log("PRINTING TOKEN", token);
         fetchSublinks();
     },[] )
 
@@ -55,7 +56,7 @@ const Navbar = () => {
   return (
     <div className={`flex h-12 items-center justify-center border-b-[1px] border-b-richblack-700 ${
         location.pathname !== "/" ? "bg-richblack-800" : ""
-      } transition-all duration-200 fixed top-0 left-0 right-0 z-20 bg-black`}>
+      } transition-all duration-200 fixed top-0 left-0 right-0 z-50 bg-black`}>
       <div className="flex w-11/12 max-w-maxContent items-center justify-between">
         {/* Image */}
       <Link to="/">
@@ -85,7 +86,7 @@ const Navbar = () => {
                                 <div className='absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5'>
                                 </div>
                                 {loading?(
-                                     <p className="text-center">Loading...</p>
+                                    <Spinner/>
                                 ):
                                  subLinks.length>0 ? (
                                         subLinks.map( (subLink, index) => (
@@ -174,7 +175,7 @@ const Navbar = () => {
                                 <div className='absolute left-[50%] top-0 -z-10 h-6 w-6 translate-x-[80%] translate-y-[-40%] rotate-45 select-none rounded bg-richblack-5'>
                                 </div>
                                 {loading?(
-                                     <p className="text-center">Loading...</p>
+                                    <Spinner/>
                                 ):
                                  subLinks.length>0 ? (
                                         subLinks.map( (subLink, index) => (

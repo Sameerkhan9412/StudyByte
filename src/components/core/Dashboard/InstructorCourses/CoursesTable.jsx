@@ -17,6 +17,7 @@ import {
 } from "../../../../services/operations/courseDetailsAPI"
 import { COURSE_STATUS } from "../../../../utils/constants"
 import ConfirmationModal from "../../../common/ConfirmationModal"
+import Spinner from "../../../common/Spinner"
 
 export default function CoursesTable({ courses, setCourses }) {
   const dispatch = useDispatch()
@@ -35,6 +36,13 @@ export default function CoursesTable({ courses, setCourses }) {
     }
     setConfirmationModal(null)
     setLoading(false)
+  }
+  if (loading) {
+    return (
+      <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+        <Spinner/>
+      </div>
+    );
   }
 
   // console.log("All Course ", courses)
@@ -153,6 +161,7 @@ export default function CoursesTable({ courses, setCourses }) {
             ))
           )}
         </Tbody>
+        <Spinner/>
       </Table>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </>
