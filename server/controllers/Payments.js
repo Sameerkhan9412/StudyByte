@@ -5,7 +5,7 @@ const mailSender = require("../utils/mailSender");
 const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail");
 const {default: mongoose} = require("mongoose");
 const crypto =require("crypto");
-
+const CourseProgress=require("../models/CourseProgress")
 // for multiple items
 exports.capturePayment = async (req, res) => {
     const {courses} = req.body;
@@ -86,16 +86,17 @@ const enrolledStudents = async (courses, userId, res) => {
             return res.status(500).json({success: false, message: "Course not Found"});
         }
 
-        // const courseProgress = await courseProgress.create({
-        //     courseID: courseID,
-        //     userId: userId,
-        //     completedVideos: [],
-        //   })
+        const courseProgress = await CourseProgress.create({
+            courseID: courseID,
+            userId: userId,
+            completedVideos: [],
+          })
 
         // find the student and add the course to their list of enrolledcourses
         const enrolledStudent = await User.findByIdAndUpdate(userId, {
             $push: {
                 courses: courseID,
+                courseProgress:courseProgress._id,
             }
         }, {new: true});
         // enrolled student ko mail send kardo

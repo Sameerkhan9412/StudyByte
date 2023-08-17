@@ -11,6 +11,7 @@ import InstructorSection from '../components/core/HomePage/InstructorSection'
 import Footer from '../components/common/Footer'
 import ExploreMore from '../components/core/HomePage/ExploreMore'
 import ReviewSlider from '../components/common/ReviewSlider'
+import laptopImg from '../assets/Images/laptop_img.png'
 const Home = () => {
   return (
     <div className='mt-9'>
@@ -48,12 +49,15 @@ const Home = () => {
                 Book a Demo
             </CTAButton>
         </div>
-
-        <div className='mx-3 my-12 drop-shadow-2xl  ;'>
+        <div>
+           
+        </div>
+        <div className=' drop-shadow-2xl w-[499px]  my-8 relative max-sm:w-[300px] '>
+            <img src={laptopImg} alt="" className='  ' />
             <video
             muted
             loop
-            autoPlay className='shadow-[4px_9px_7px_8px_white]'>
+            autoPlay className=' absolute top-4 right-[49px]   w-[400px] -z-10 max-sm:w-[230px] max-sm:top-3 max-sm:right-[35px]'>
             <source src={Banner}/>
             </video>
         </div>
@@ -198,7 +202,6 @@ const Home = () => {
             {/* Review Slider here */}
       </div>
 
-            <h2 className='font-semibold text-4xl text-center mt-10 text-white'>Review from Other Learners</h2>
             <ReviewSlider/>
 
       {/*Footer */}
