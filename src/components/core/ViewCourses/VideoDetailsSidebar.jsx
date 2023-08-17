@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { BsChevronDown,BsChevronDoubleLeft } from "react-icons/bs"
+import { BsChevronDown } from "react-icons/bs"
 import { IoIosArrowBack } from "react-icons/io"
 import { useSelector } from "react-redux"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
@@ -28,22 +28,27 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
       const currentSubSectionIndx = courseSectionData?.[
         currentSectionIndx
       ]?.SubSection.findIndex((data) => data._id === subSectionId)
+      console.log("couttent subsection index",currentSectionIndx)
+      console.log("this is scourse sectio data",courseSectionData)
       const activeSubSectionId =
-        courseSectionData[currentSectionIndx]?.subSection?.[
+        courseSectionData[currentSectionIndx]?.SubSection?.[
           currentSubSectionIndx
-        ]?._id
+        ]?._id;
+        console.log("acitve al".activeSubSectionId);
+        // set current section here
       setActiveStatus(courseSectionData?.[currentSectionIndx]?._id)
+      // set current suvsection here
       setVideoBarActive(activeSubSectionId)
+      
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [courseSectionData, courseEntireData, location.pathname])
-  
 
   return (
     <>
-      <div className="flex min-h-[100vh] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 max-md:absolute z-10 overflow-hidden " id="videSidebar">
+      <div className="flex h-[calc(100vh-3.5rem)] w-[320px] max-w-[350px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800">
         <div className="mx-5 flex flex-col items-start justify-between gap-2 gap-y-4 border-b border-richblack-600 py-5 text-lg font-bold text-richblack-25">
-          <div className="flex w-full items-center justify-between relative ">
+          <div className="flex w-full items-center justify-between ">
             <div
               onClick={() => {
                 navigate(`/dashboard/enrolled-courses`)
@@ -66,6 +71,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
             </p>
           </div>
         </div>
+
         <div className="h-[calc(100vh - 5rem)] overflow-y-auto">
           {courseSectionData.map((course, index) => (
             <div
