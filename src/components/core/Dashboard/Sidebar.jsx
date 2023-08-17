@@ -7,6 +7,8 @@ import { sidebarLinks } from "../../../data/dashboard-links"
 import { logout } from "../../../services/operations/authAPI"
 import ConfirmationModal from "../../common/ConfirmationModal"
 import SidebarLink from "./SidebarLink"
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+
 
 export default function Sidebar() {
   const { user, loading: profileLoading } = useSelector(
@@ -25,10 +27,27 @@ export default function Sidebar() {
       </div>
     )
   }
+  const ShowOrHideSideBar=()=>{
+    let navigateIconLeft=document.getElementById("NavigateLeftBtn").classList;
+    let navigateIconRight=document.getElementById("NavigateRightBtn").classList;
+    let SideBar=document.getElementById("dashboardSidebar").style;
+    // navigateIconLeft.replace("visible","hidden")
+    if(navigateIconLeft=="visible"){
+      navigateIconLeft.replace("visible","hidden");
+      navigateIconRight.replace("hidden","visible");
+      SideBar.width="50px";
+    }
+    else{
+      navigateIconLeft.replace("hidden","visible");
+      navigateIconRight.replace("visible","hidden");
+      SideBar.width="220px";
+    }
+    
+  }
 
   return (
     <>
-      <div className="flex overflow-auto min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10">
+      <div className="flex overflow-auto  flex-col border-r-[4px] border-r-richblack-700 bg-richblack-800 py-10 relative overflow-x-hidden transition-all" id="dashboardSidebar" >
         <div className="flex flex-col">
           {sidebarLinks.map((link) => {
             if (link.type && user?.accountType !== link.type) return null
@@ -37,7 +56,7 @@ export default function Sidebar() {
             )
           })}
         </div>
-        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-700" />
+        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-700" id="SideBar"/>
         <div className="flex flex-col">
           <SidebarLink
             link={{ name: "Settings", path: "/dashboard/settings" }}
@@ -62,6 +81,10 @@ export default function Sidebar() {
             </div>
           </button>
         </div>
+        <button className="text-white text-4xl absolute bottom-2 right-2"  onClick={ShowOrHideSideBar}>
+            <FaAngleDoubleLeft id="NavigateLeftBtn" className="visible" />
+            <FaAngleDoubleRight id="NavigateRightBtn" className="hidden" />
+          </button>
       </div>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </>
