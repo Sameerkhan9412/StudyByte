@@ -12,12 +12,7 @@ exports.updateProfile = async (req, res) => {
 	const profile = await Profile.findById(userDetails.additionalDetails);
 	// console.log(profile);
 	try {
-<<<<<<< HEAD
-		const { dateOfBirth = "", about = "",gender="", contactNumber } = req.body;
-		const id = req.user.id;
-=======
 		const { dateOfBirth = "", about = "", contactNumber } = req.body;
->>>>>>> demo
 
 		// Find the profile by id
 
