@@ -105,7 +105,7 @@ const enrolledStudents = async (courses, userId, res) => {
             `successfully Enrolled into ${enrolledCourse.courseName}`,
             courseEnrollmentEmail(enrolledCourse.courseName,`${enrolledStudent.firstName}`+ " "+`${enrolledStudent.lastName}` )
             )
-            console.log("Email Sent successfully",emailResponse.response);
+            // console.log("Email Sent successfully",emailResponse.response);
     }
 }
 catch(error){

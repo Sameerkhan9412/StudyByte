@@ -26,7 +26,7 @@ const mailSender = async (email, title, body) => {
     }
     catch(error) {
         console.log(error.message);
-        console.log("hiii")
+        console.log("error during seding mail")
     }
 }
 
