@@ -15,7 +15,7 @@ StudyByte Live URL - https://linktodocumentation
 
 ## 🔥Installation
 
-1.  Clone Repository: `https://github.com/Horror26/StudyNotion.git`
+1.  Clone Repository: `https://github.com/Horror26/StudyByte.git`
 2. Navigate to the project directory: `cd`
 3. Install dependencies for frontend : `npm install`
 4. navigate to server  and install dependencies:`npm install`
@@ -258,7 +258,7 @@ The back end of the platform is built using NodeJS and ExpressJS,. The back end 
 The database for the platform is built using MongoDB, which is a NoSQL database that provides a flexible and scalable data storage solution. MongoDB allows for the storage of unstructured and semi-structured data. The database stores the course content, user data, and other relevant information related to the platform.
 
 ## Architecture Diagram:
-Here is a high-level diagram that illustrates the architecture of the StudyNotion ed-tech platform:
+Here is a high-level diagram that illustrates the architecture of the StudyByte ed-tech platform:
 
 ## Frontend End:
 The front end of StudyByte has all the necessary pages that an ed-tech platform should have. Some of these pages are:
@@ -285,9 +285,9 @@ The front end of StudyByte has all the necessary pages that an ed-tech platform 
 To build the front end, we use frameworks and libraries such as ReactJS, We also use CSS and Tailwind, which are styling frameworks that help make the user interface look good and responsive. To manage the state of the application, we use Redux, which is a popular state management library for React.
 
 ## Backend:
-Description of the Back-end Architecture: StudyNotion uses a monolithic architecture, with the backend built using Node.js and Express.js, and MongoDB as the primary database.
+Description of the Back-end Architecture: StudyByte uses a monolithic architecture, with the backend built using Node.js and Express.js, and MongoDB as the primary database.
 
-Features and Functionalities of the Back-end: The back end of StudyNotion provides a range of features and functionalities, including:
+Features and Functionalities of the Back-end: The back end of StudyByte provides a range of features and functionalities, including:
 
 1. User authentication and authorization: Students and instructors can sign up and log in to the platform using their email addresses and password. The platform also supports OTP (One-Time Password) verification and forgot password functionality for added security.
 
@@ -295,11 +295,11 @@ Features and Functionalities of the Back-end: The back end of StudyNotion provid
 
 3. Payment Integration: Students will purchase and enrol on courses by completing the checkout flow that is followed by Razorpay integration for payment handling.
 
-4. Cloud-based media management: StudyNotion uses Cloudinary, a cloud-based media management service, to store and manage all media content, including images, videos, and documents.
+4. Cloud-based media management: StudyByte uses Cloudinary, a cloud-based media management service, to store and manage all media content, including images, videos, and documents.
 
 5. Markdown formatting: Course content in document format is stored in Markdown format, which allows for easier display and rendering on the front end.
 
-Frameworks, Libraries, and Tools used: The back end of StudyNotion uses a range of frameworks, libraries, and tools to ensure its functionality and performance, including:
+Frameworks, Libraries, and Tools used: The back end of StudyByte uses a range of frameworks, libraries, and tools to ensure its functionality and performance, including:
 
 1. Node.js: Node.js is used as the primary framework for the back end.
 
@@ -314,15 +314,15 @@ Frameworks, Libraries, and Tools used: The back end of StudyNotion uses a range 
 6. Mongoose: Mongoose is used as an Object Data Modeling (ODM) library, providing a way to interact with MongoDB using JavaScript
 
 ## Data Models and Database Schema:
-The back end of StudyNotion uses a range of data models and database schemas to manage data, including:
+The back end of StudyByte uses a range of data models and database schemas to manage data, including:
 1. Student schema: Includes fields such as name, email, password, and course details for each student.
 2. Instructor schema: Includes fields such as name, email, password, and course details for each instructor.
 3. Course schema: Includes fields such as course name, description, instructor details, and media content.
 
-Overall, the back-end of StudyNotion is designed to provide a robust and scalable solution for an ed-tech platform, with a focus on security, reliability, and ease of use. By using the right frameworks, libraries, and tools, we can ensure that the platform functions smoothly and provides an optimal user experience for all its users.
+Overall, the back-end of StudyByte is designed to provide a robust and scalable solution for an ed-tech platform, with a focus on security, reliability, and ease of use. By using the right frameworks, libraries, and tools, we can ensure that the platform functions smoothly and provides an optimal user experience for all its users.
 
 ## API Design:
-The StudyNotion platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE. Sample list of API endpoints and their functionalities:
+The StudyByte platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE. Sample list of API endpoints and their functionalities:
 
 1. /api/auth/signup (POST) - Create a new user (student or instructor) account.
 2.  /api/auth/login (POST) – Log in using existing credentials and generate a JWT token.
@@ -348,5 +348,4 @@ The StudyNotion platform's API is designed following the REST architectural styl
 15. DELETE /api/courses/🆔 Delete a course by ID
     -   Response: A success message indicating that the course has been deleted.
 
-In conclusion, the REST API design for the StudyNotion ed-tech platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application. By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and what kind of data it will accept or return. With this API design, StudyNotion will be able to provide a smooth user experience while ensuring security and stability.
-
+In conclusion, the REST API design for the StudyByte ed-tech platform is a crucial part of the project. The API endpoints and their functionalities are designed to ensure seamless communication between the front-end and back-end of the application. By following RESTful principles, the API will be scalable, maintainable, and reliable. The sample API requests and responses provided above illustrate how each endpoint will function and what kind of data it will accept or return. With this API design, StudyByte will be able to provide a smooth user experience while ensuring security and stability.
