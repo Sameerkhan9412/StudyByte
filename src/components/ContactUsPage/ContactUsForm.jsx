@@ -2,47 +2,9 @@ import React, { useEffect, useState } from "react"
 import { useForm, ValidationError } from '@formspree/react';
 
 import CountryCode from "../../data/countrycode.json"
-import { apiConnector } from "../../services/apiConnector"
-import { contactusEndpoint } from "../../services/apis"
 
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false)
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   reset,
-  //   formState: { errors, isSubmitSuccessful },
-  // } = useForm()
-
-  // const submitContactForm = async (data) => {
-  //   // console.log("Form Data - ", data)
-  //   try {
-  //     setLoading(true)
-  //     const res = await apiConnector(
-  //       "POST",
-  //       contactusEndpoint.CONTACT_US_API,
-  //       data
-  //     )
-  //     // console.log("Email Res - ", res)
-  //     setLoading(false)
-  //   } catch (error) {
-  //     console.log("ERROR MESSAGE - ", error.message)
-  //     setLoading(false)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   if (isSubmitSuccessful) {
-  //     reset({
-  //       email: "",
-  //       firstname: "",
-  //       lastname: "",
-  //       message: "",
-  //       phoneNo: "",
-  //     })
-  //   }
-  // }, [reset, isSubmitSuccessful])
-
   const [state, handleSubmit] = useForm("xoqovbwl");
   if (state.succeeded) {
       return <div className="text-4xl mx-auto text-yellow-25 drop-shadow-md ">Your form is submitted successfully , Thanks for joining us!</div>;

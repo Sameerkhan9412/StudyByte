@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BiInfoCircle } from "react-icons/bi";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
-// import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { BsFillCaretRightFill } from "react-icons/bs";
@@ -58,7 +57,6 @@ function CourseDetails() {
   // console.log("avgReviewCount: ", avgReviewCount)
 
   // // Collapse all
-  const [collapse, setCollapse] = useState("");
   const [isActive, setIsActive] = useState(Array(0));
   const handleActive = (id) => {
     // console.log("called", id)
@@ -200,7 +198,6 @@ function CourseDetails() {
           <div className="my-8 border border-richblack-600 p-8">
             <p className="text-3xl font-semibold">What you'll learn</p>
             <div className="mt-5">
-              {/* <ReactMarkdown>{whatYouWillLearn}</ReactMarkdown> */}
               {whatYouWillLearn}
             </div>
           </div>

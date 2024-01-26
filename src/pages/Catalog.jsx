@@ -7,7 +7,7 @@ import { apiConnector } from '../services/apiConnector';
 import Footer from '../components/common/Footer'
 import { categories } from '../services/apis';
 import { useSelector } from 'react-redux';
-import Course_Card from '../components/core/Catalog/Course_Card';
+import CourseCard from '../components/core/Catalog/Course_Card';
 import CourseSlider from '../components/core/Catalog/CourseSlider';
 import Error from './Error';
 
@@ -80,30 +80,15 @@ const Catalog = () => {
       <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
         <div className="section_heading">Courses to get you started</div>
         <div className="my-4 flex border-b border-b-richblack-600 text-sm">
-          <p
-            // className={`px-4 py-2 ${
-            //   active === 1
-            //     ? "border-b border-b-yellow-25 text-yellow-25"
-            //     : "text-richblack-50"
-            // } cursor-pointer`}
-            // onClick={() => setActive(1)}
-          >
+          <p>
             Most Populer
           </p>
-          <p
-            // className={`px-4 py-2 ${
-            //   active === 2
-            //     ? "border-b border-b-yellow-25 text-yellow-25"
-            //     : "text-richblack-50"
-            // } cursor-pointer`}
-            // onClick={() => setActive(2)}
-          >
+          <p>
             New
           </p>
         </div>
         <div>
           <CourseSlider
-            // Courses={catalogPageData?.data?.selectedCategory?.courses}
             Courses={catalogPageData?.data?.selectedCategory?.courses}
           />
           
@@ -129,7 +114,7 @@ const Catalog = () => {
             {catalogPageData?.data?.mostSellingCourses
               ?.slice(0, 4)
               .map((course, i) => (
-                <Course_Card course={course} key={i} Height={"h-[400px]"} />
+                <CourseCard course={course} key={i} Height={"h-[400px]"} />
               ))}
           </div>
         </div>

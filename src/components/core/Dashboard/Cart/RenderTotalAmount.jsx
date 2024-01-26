@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-// import { BuyCourse } from "../../../../services/operations/studentFeaturesAPI"
 import { buyCourse } from "../../../../services/operations/StudentFeaturesAPI"
 import IconBtn from "../../../common/IconBtn"
 

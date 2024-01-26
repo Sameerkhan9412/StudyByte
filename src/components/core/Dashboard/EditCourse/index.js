@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom';
 import RenderSteps from '../AddCourse/RenderSteps';
 import { useEffect } from 'react';
-// import { getFullCourseDetails } from '../../../../../server/controllers/Course';
 import { getFullDetailsOfCourse } from '../../../../services/operations/courseDetailsAPI';
 import { setCourse, setEditCourse } from '../../../../slices/courseSlice';
 const EditCourse = () => {

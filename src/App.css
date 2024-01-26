@@ -74,16 +74,6 @@ details > summary::-webkit-details-marker {
   display: none;
 }
 
-/* https://10015.io/tools/css-loader-generator */
-/* .custom-loader {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 9px solid #f1f2ff;
-  animation: custom-loader-bulqg1 0.8s infinite linear alternate,
-    custom-loader-oaa3wk 1.6s infinite linear;
-} */
-
 .custom-loader {
   width: 50px;
   height: 50px;
@@ -276,23 +266,10 @@ animation-timing-function: linear
   @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900;
 }
 
-/* Swiper CSS Starts */
-/* .swiper {
-  max-width: 1200px;
-  width: 91.66%;
-  height: 185px;
-  margin: 50px 0px;
-} */
-
 .swiper-slide {
   width: 100%;
   height: 100%;
 }
-/* .swiper-slide {
-  @apply bg-richblack-800 text-richblack-25 p-3 text-[14px];
-} */
-/* Swiper CSS Ends */
-
 .blackButton {
   @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5;
 }

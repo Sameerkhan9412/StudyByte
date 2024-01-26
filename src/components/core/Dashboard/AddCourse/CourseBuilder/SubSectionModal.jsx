@@ -4,8 +4,6 @@ import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { createSubSection, updateSubSection } from '../../../../../services/operations/courseDetailsAPI';
 import { setCourse } from '../../../../../slices/courseSlice';
-import { Form } from 'react-router-dom';
-// import {RxCross1} from "react-icons/rx"
 import { RxCross2 } from "react-icons/rx"
 import Upload from '../Upload';
 import IconBtn from '../../../../common/IconBtn';
@@ -26,10 +24,6 @@ export default function SubSectionModal({
       getValues,
     } = useForm()
   
-    // console.log("view", view)
-    // console.log("edit", edit)
-    // console.log("add", add)
-  
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const { token } = useSelector((state) => state.auth)
@@ -37,7 +31,6 @@ export default function SubSectionModal({
   
     useEffect(() => {
       if (view || edit) {
-        // console.log("modalData", modalData)
         setValue("lectureTitle", modalData.title)
         setValue("lectureDesc", modalData.description)
         setValue("lectureVideo", modalData.videoUrl)

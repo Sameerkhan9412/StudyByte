@@ -8,8 +8,6 @@ import GetAvgRating from "../../../utils/avgRating"
 import RatingStars from "../../common/RatingStars"
 
 function CourseCard({ course, Height }) {
-  // const avgReviewCount = GetAvgRating(course.ratingAndReviews)
-  // console.log(course.ratingAndReviews)
   const [avgReviewCount, setAvgReviewCount] = useState(0)
   useEffect(() => {
     const count = GetAvgRating(course.ratingAndReviews)
@@ -35,15 +33,6 @@ function CourseCard({ course, Height }) {
             </p>
             <div className="flex items-center gap-2">
               <span className="text-yellow-5">{avgReviewCount || 0}</span>
-              {/* <ReactStars
-                count={5}
-                value={avgReviewCount || 0}
-                size={20}
-                edit={false}
-                activeColor="#ffd700"
-                emptyIcon={<FaRegStar />}
-                fullIcon={<FaStar />}
-              /> */}
               <RatingStars Review_Count={avgReviewCount} />
               <span className="text-richblack-400">
                 {course?.ratingAndReviews?.length} Ratings

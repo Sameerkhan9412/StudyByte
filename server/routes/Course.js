@@ -29,13 +29,6 @@ const {
   updateSection,
   deleteSection,
 } = require("../controllers/Section")
-
-// Sub-Sections Controllers Import
-// const {
-//   createSubSection,
-//   updateSubSection,
-//   deleteSubSection,
-// } = require("../controllers/SubSection")
 const {createSubSection,updatedSection,updateSubSection,deleteSubSection}=require("../controllers/Subsection");
 
 // Rating Controllers Import
@@ -92,7 +85,6 @@ router.post("/updateCourseProgress",auth,isStudent,updateCourseProgress)
 //                                      Category routes (Only by Admin)
 // ********************************************************************************************************
 // Category can Only be Created by Admin
-// TODO: Put IsAdmin Middleware here
 router.post("/createCategory", auth, isAdmin, createCategory)
 router.get("/showAllCategories", showAllCategories)
 router.post("/getCategoryPageDetails", categoryPageDetails)

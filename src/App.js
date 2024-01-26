@@ -95,7 +95,6 @@ function App() {
       {
         user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
           <>
-          {/* <Route path="dashboard/instructor" element={<Instructor/>}/>  */}
           <Route path="dashboard/instructor" element={<Instructor />} />
           <Route path="dashboard/add-course" element={<AddCourse/>} />
           <Route path="dashboard/enrolled-courses" element={<EnrolledCourses />} />

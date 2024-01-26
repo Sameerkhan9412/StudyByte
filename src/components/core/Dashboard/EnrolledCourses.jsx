@@ -19,11 +19,6 @@ const EnrolledCourses = () => {
   
           // Filtering the published course out
           const filterPublishCourse = res.filter((ele) => ele.status !== "Draft")
-          // console.log(
-          //   "Viewing all the couse that is Published",
-          //   filterPublishCourse
-          // )
-  
           setEnrolledCourses(filterPublishCourse)
         } catch (error) {
           console.log("Could not fetch enrolled courses.")

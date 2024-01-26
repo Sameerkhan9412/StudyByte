@@ -41,11 +41,6 @@ exports.updateProfile = async (req, res) => {
 
 exports.deleteAccount = async (req, res) => {
 	try {
-		// TODO: Find More on Job Schedule
-		// const job = schedule.scheduleJob("10 * * * * *", function () {
-		// 	console.log("The answer to life, the universe, and everything!");
-		// });
-		// console.log(job);
 		const id = req.user.id;
 		const user = await User.findById({ _id: id });
 		if (!user) {
@@ -56,7 +51,6 @@ exports.deleteAccount = async (req, res) => {
 		}
 		// Delete Assosiated Profile with the User
 		await Profile.findByIdAndDelete({ _id: user.additionalDetails });
-		// TODO: Unenroll User From All the Enrolled Courses
 		// Now Delete User
 		await User.findByIdAndDelete({ _id: id });
 		res.status(200).json({

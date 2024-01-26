@@ -5,11 +5,8 @@ import BannerImage1 from "../assets/Images/aboutus1.webp";
 import BannerImage2 from "../assets/Images/aboutus2.webp";
 import BannerImage3 from "../assets/Images/aboutus3.webp";
 import Footer from "../components/common/Footer";
-// import ReviewSlider from "../components/Common/ReviewSlider"
-// import ContactFormSection from "../components/core/AboutPage/ContactFormSection"
 import ContactFormSection from "../components/ContactUsPage/ContactUsForm";
 import LearningGrid from "../components/core/AboutPage/LearningGrid";
-// import Quote from "../components/core/AboutPage/Quote"
 import Quote from "../components/core/AboutPage/Quote";
 import StatsComponenet from "../components/core/AboutPage/StatsComponents";
 import HighlightText from "../components/core/HomePage/HighlightText";

@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux'
-import RatingStars from '../../common/RatingStars';
 import { RxCross2 } from "react-icons/rx"
 import IconBtn from '../../common/IconBtn';
 import { createRating } from '../../../services/operations/courseDetailsAPI';
@@ -43,17 +42,6 @@ const CourseReviewModel = ({setReviewModal}) => {
         );
         setReviewModal(false)
     }
-    // const thirdExample = {
-    //     size: 40,
-    //     count: 7,
-    //     isHalf: false,
-    //     value: 4,
-    //     color: "blue",
-    //     activeColor: "red",
-    //     onChange: newValue => {
-    //       console.log(`Example 3: new value is ${newValue}`);
-    //     }
-    //   };
       
   return (
     <div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">

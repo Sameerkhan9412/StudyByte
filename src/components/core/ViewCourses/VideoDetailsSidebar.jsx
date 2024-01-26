@@ -50,7 +50,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
     let navigateIconRight=document.getElementById("NavigateRightBtn").classList;
     let SideBar=document.getElementById("SideBar").style;
     // navigateIconLeft.replace("visible","hidden")
-    if(navigateIconLeft=="visible"){
+    if(navigateIconLeft==="visible"){
       navigateIconLeft.replace("visible","hidden");
       navigateIconRight.replace("hidden","visible");
       SideBar.width="40px";

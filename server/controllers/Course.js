@@ -70,14 +70,6 @@ exports.createCourse = async (req, res) => {
                 courses: newCourse._id
             }
         }, {new: true});
-        // Add the new course to the Categories
-        // const hi=await Category.findByIdAndUpdate({
-        //     _id: categoryDetails._id
-        // }, {
-        //     $push: {
-        //         course: newCourse._id
-        //     }
-        // }, {new: true});
         const categoryDetails2 = await Category.findByIdAndUpdate(
           { _id: category },
           {
@@ -207,13 +199,6 @@ exports.getCourseDetails = async (req, res) => {
             return res.status(400).json({success: false, message: `Could not find course with id: ${courseId}`})
         }
 
-        // if (courseDetails.status === "Draft") {
-        //     return res.status(403).json({
-        //       success: false,
-        //       message: `Accessing a draft course is forbidden`,
-        //     });
-        // }
-
         let totalDurationInSeconds = 0
         courseDetails.courseContent.forEach((content) => {
             content.SubSection.forEach((SubSection) => {
@@ -259,13 +244,6 @@ exports.getFullCourseDetails = async (req, res) => {
             return res.status(400).json({success: false, message: `Could not find course with id: ${courseId}`})
         }
 
-        // if (courseDetails.status === "Draft") {
-        // return res.status(403).json({
-        //     success: false,
-        //     message: `Accessing a draft course is forbidden`,
-        // });
-        // }
-
         let totalDurationInSeconds = 0
         courseDetails.courseContent.forEach((content) => {
             content.SubSection.forEach((SubSection) => {
@@ -304,51 +282,7 @@ exports.getInstructorCourses = async (req, res) => {
         res.status(500).json({success: false, message: "Failed to retrieve instructor courses", error: error.message})
     }
 }
-// Delete the Course
-// exports.deleteCourse = async (req, res) => {
-//     try {
-//         const {courseId} = req.body
 
-//         // Find the course
-//         const course = await Course.findById(courseId)
-//         if (! course) {
-//             return res.status(404).json({message: "Course not found"})
-//         }
-
-//         // Unenroll students from the course
-//         const studentsEnrolled = course.studentsEnrolled
-//         for (const studentId of studentsEnrolled) {
-//             await User.findByIdAndUpdate(studentId, {
-//                 $pull: {
-//                     courses: courseId
-//                 }
-//             })
-//         }
-
-//         // Delete sections and sub-sections
-//         const courseSections = course.courseContent
-//         for (const sectionId of courseSections) { // Delete sub-sections of the section
-//             const section = await Section.findById(sectionId)
-//             if (section) {
-//                 const SubSections = section.SubSection
-//                 for (const SubSectionId of SubSections) {
-//                     await SubSection.findByIdAndDelete(SubSectionId)
-//                 }
-//             }
-
-//             // Delete the section
-//             await Section.findByIdAndDelete(sectionId)
-//         }
-
-//         // Delete the course
-//         await Course.findByIdAndDelete(courseId)
-
-//         return res.status(200).json({success: true, message: "Course deleted successfully"})
-//     } catch (error) {
-//         console.error(error)
-//         return res.status(500).json({success: false, message: "Server error", error: error.message})
-//     }
-// }
 // Delete the Course
 exports.deleteCourse = async (req, res) => {
     try {
