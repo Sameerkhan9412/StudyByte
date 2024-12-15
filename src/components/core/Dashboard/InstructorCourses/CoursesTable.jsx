@@ -67,8 +67,7 @@ export default function CoursesTable({ courses, setCourses }) {
           {courses?.length === 0 ? (
             <Tr>
               <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
-                No courses found
-                {/* TODO: Need to change this state */}
+               <Spinner/>
               </Td>
             </Tr>
           ) : (
@@ -158,7 +157,6 @@ export default function CoursesTable({ courses, setCourses }) {
             ))
           )}
         </Tbody>
-        <Spinner/>
       </Table>
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </>
