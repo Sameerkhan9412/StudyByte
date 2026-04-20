@@ -1,5 +1,5 @@
 import { toast } from "react-hot-toast"
-import { apiConnector } from "../apiConnector"
+import { apiConnector } from "../apiConnector";
 import { courseEndpoints } from "../apis"
 
 const {
@@ -19,6 +19,8 @@ const {
   GET_FULL_COURSE_DETAILS_AUTHENTICATED,
   CREATE_RATING_API,
   LECTURE_COMPLETION_API,
+  GENERATE_QUIZ_API,
+  GET_QUIZ_API
 } = courseEndpoints
 
 export const getAllCourses = async () => {
@@ -236,6 +238,32 @@ export const deleteSubSection = async (data, token) => {
   }
   return result
 }
+
+export const generateQuiz = async (data, token) => {
+  const response = await apiConnector(
+    "POST",
+    GENERATE_QUIZ_API,
+    data,
+    {
+      Authorization: `Bearer ${token}`,
+    }
+  );
+
+  return response.data.data;
+};
+
+export const getQuizBySubSection = async (data, token) => {
+  const response = await apiConnector(
+    "POST",
+    GET_QUIZ_API,
+    data,
+    {
+      Authorization: `Bearer ${token}`,
+    }
+  );
+
+  return response.data.data;
+};
 
 // fetching all courses under a specific instructor
 export const fetchInstructorCourses = async (token) => {

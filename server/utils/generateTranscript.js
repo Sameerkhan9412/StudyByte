@@ -1,49 +1,28 @@
 const axios = require("axios");
-const SubSection = require("../models/SubSection");
 
-async function generateTranscript(subSectionId, videoUrl) {
+async function generateTranscript(videoUrl) {
   try {
-    // Step 1: Mark processing
-    await SubSection.findByIdAndUpdate(subSectionId, {
-      transcriptStatus: "processing",
-      transcriptError: "",
-    });
-
-    // Step 2: Send Cloudinary video URL directly to AssemblyAI
-    // const createRes = await axios.post(
-    // "https://api.assemblyai.com/v2/transcript",
-    // {
-    //     audio_url: videoUrl,
-    //     speech_model:["universal-2"]
-    // },
-    // {
-    //     headers: {
-    //     authorization: process.env.ASSEMBLYAI_API_KEY,
-    //     "content-type": "application/json",
-    //     },
-    // }
-    // );
+    // Create transcript request
     const createRes = await axios.post(
-  "https://api.assemblyai.com/v2/transcript",
-  {
-    audio_url: videoUrl,
-    speech_models: ["universal-2"]
-  },
-  {
-    headers: {
-      authorization: process.env.ASSEMBLYAI_API_KEY,
-      "content-type": "application/json"
-    }
-  }
-);
-    console.log("create ddkd",createRes)
+      "https://api.assemblyai.com/v2/transcript",
+      {
+        audio_url: videoUrl,
+        speech_models: ["universal-2"],
+      },
+      {
+        headers: {
+          authorization: process.env.ASSEMBLYAI_API_KEY,
+          "content-type": "application/json",
+        },
+      }
+    );
 
     const transcriptId = createRes.data.id;
 
-    // Step 3: Poll until transcription completes
-    let transcriptText = "";
     let status = "queued";
+    let transcriptText = "";
 
+    // Poll until completed or error
     while (status !== "completed" && status !== "error") {
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
@@ -55,7 +34,6 @@ async function generateTranscript(subSectionId, videoUrl) {
           },
         }
       );
-      console.log("posssssssssssd",pollRes)
 
       status = pollRes.data.status;
 
@@ -64,18 +42,22 @@ async function generateTranscript(subSectionId, videoUrl) {
       }
 
       if (status === "error") {
-        throw new Error(
-          pollRes.data.error || "Transcription failed"
-        );
+        return {
+          success: false,
+          transcript: "",
+          transcriptStatus: "failed",
+          transcriptError:
+            pollRes.data.error || "Transcription failed",
+        };
       }
     }
 
-    // Step 4: Save transcript
-    await SubSection.findByIdAndUpdate(subSectionId, {
+    return {
+      success: true,
       transcript: transcriptText,
       transcriptStatus: "completed",
       transcriptError: "",
-    });
+    };
 
   } catch (error) {
     console.error(
@@ -83,11 +65,13 @@ async function generateTranscript(subSectionId, videoUrl) {
       error.response?.data || error.message
     );
 
-    await SubSection.findByIdAndUpdate(subSectionId, {
+    return {
+      success: false,
+      transcript: "",
       transcriptStatus: "failed",
       transcriptError:
         error.response?.data?.error || error.message,
-    });
+    };
   }
 }
 

@@ -22,25 +22,30 @@ exports.createSubSection = async (req, res) => {
       });
     }
 
-    // Upload video
+    // 1. Upload video
     const uploadDetails = await uploadImageToCloudinary(
       video,
       process.env.FOLDER_NAME
     );
 
-    // Create lecture
+    // 2. Generate transcript
+    const transcriptResult = await generateTranscript(
+      uploadDetails.secure_url
+    );
+
+    // 3. Create lecture
     const subSectionDetails = await SubSection.create({
       title,
       timeDuration: `${uploadDetails.duration}`,
       description,
       videoUrl: uploadDetails.secure_url,
 
-      transcript: "",
-      transcriptStatus: "pending",
-      transcriptError: "",
+      transcript: transcriptResult.transcript,
+      transcriptStatus: transcriptResult.transcriptStatus,
+      transcriptError: transcriptResult.transcriptError,
     });
 
-    // Add lecture to section
+    // 4. Add lecture to section
     const updatedSection = await Section.findByIdAndUpdate(
       sectionId,
       {
@@ -48,12 +53,6 @@ exports.createSubSection = async (req, res) => {
       },
       { new: true }
     ).populate("SubSection");
-
-    // Background transcript generation
-    generateTranscript(
-      subSectionDetails._id,
-      uploadDetails.secure_url
-    ).catch(console.error);
 
     return res.status(200).json({
       success: true,
@@ -66,12 +65,11 @@ exports.createSubSection = async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+      message: "Lecture creation failed",
       error: error.message,
     });
   }
 };
-
 // ======================================================
 // Update SubSection
 // ======================================================
@@ -252,6 +250,31 @@ exports.generateQuiz = async (req, res) => {
       success: false,
       message: "Quiz generation failed",
       error: error.message,
+    });
+  }
+};
+
+exports.getQuizBySubSection = async (req, res) => {
+  try {
+    const { subSectionId } = req.body;
+
+    const quiz = await Quiz.findOne({ subSectionId });
+
+    if (!quiz) {
+      return res.status(404).json({
+        success: false,
+        message: "Quiz not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      data: quiz,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
     });
   }
 };
