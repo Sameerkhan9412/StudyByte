@@ -6,6 +6,7 @@ import { generateQuiz } from "../../../../../services/operations/courseDetailsAP
 
 export default function QuizReviewModal({
   subSectionId,
+  mode,
   setShowQuizModal,
 }) {
   const { token } = useSelector((state) => state.auth);
@@ -13,14 +14,34 @@ export default function QuizReviewModal({
   const [quiz, setQuiz] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // const fetchQuiz = async () => {
+  //   try {
+  //     setLoading(true);
+
+  //     const result = await generateQuiz(
+  //       { subSectionId },
+  //       token
+  //     );
+
+  //     setQuiz(result);
+  //   } catch (error) {
+  //     toast.error("Failed to load quiz");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const fetchQuiz = async () => {
     try {
       setLoading(true);
 
-      const result = await generateQuiz(
-        { subSectionId },
-        token
-      );
+      let result;
+
+      if (mode === "view") {
+        result = await getQuizBySubSection({ subSectionId }, token);
+      } else {
+        result = await generateQuiz({ subSectionId }, token);
+      }
 
       setQuiz(result);
     } catch (error) {
@@ -29,7 +50,6 @@ export default function QuizReviewModal({
       setLoading(false);
     }
   };
-
   useEffect(() => {
     fetchQuiz();
   }, []);
@@ -37,13 +57,10 @@ export default function QuizReviewModal({
   return (
     <div className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
       <div className="w-full max-w-5xl rounded-2xl border border-richblack-700 bg-richblack-800 shadow-2xl">
-
         {/* Header */}
         <div className="flex items-center justify-between border-b border-richblack-700 px-6 py-5">
           <div>
-            <h2 className="text-3xl font-bold text-richblack-5">
-              Quiz Review
-            </h2>
+            <h2 className="text-3xl font-bold text-richblack-5">Quiz Review</h2>
             <p className="mt-1 text-sm text-richblack-300">
               Review generated questions before publishing
             </p>
@@ -87,8 +104,7 @@ export default function QuizReviewModal({
                   {/* Options */}
                   <div className="grid gap-3 md:grid-cols-2">
                     {q.options.map((opt, i) => {
-                      const isCorrect =
-                        opt === q.correctAnswer;
+                      const isCorrect = opt === q.correctAnswer;
 
                       return (
                         <div
@@ -122,9 +138,7 @@ export default function QuizReviewModal({
             </div>
           ) : (
             <div className="py-16 text-center">
-              <p className="text-lg text-richblack-100">
-                No quiz found
-              </p>
+              <p className="text-lg text-richblack-100">No quiz found</p>
               <p className="mt-2 text-sm text-richblack-400">
                 Generate a quiz to review questions here.
               </p>
@@ -141,11 +155,11 @@ export default function QuizReviewModal({
             Close
           </button>
 
-          <button
+          {/* <button
             className="rounded-lg bg-yellow-50 px-5 py-2 font-semibold text-richblack-900 transition hover:scale-[1.02]"
           >
             Publish Quiz
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
