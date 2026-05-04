@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+  "node": ">=18"
+},
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
@@ -32,8 +35,10 @@
     "mongoose": "^7.1.0",
     "node-fetch": "^2.7.0",
     "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.22",
     "otp-generator": "^4.0.1",
     "razorpay": "^2.8.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
