@@ -53,6 +53,7 @@ const {
   isStudent,
   isAdmin,
 } = require ('../middlewares/auth');
+const { getStudentQuiz, submitQuizAnswers } = require('../controllers/QuizAttempt');
 
 // ********************************************************************************************************
 //                                      Course routes
@@ -72,7 +73,12 @@ router.post ('/updateSubSection', auth, isInstructor, updateSubSection);
 router.post ('/deleteSubSection', auth, isInstructor, deleteSubSection);
 // add quiz
 router.post ('/generateQuiz', auth, isInstructor, generateQuiz);
-router.post ('/getQuizBySubSection', auth, isInstructor, getQuizBySubSection);
+// router.post ('/getQuizBySubSection', auth, isInstructor, getQuizBySubSection);
+
+// Student Quiz Routes
+router.post ('/getStudentQuiz', auth, isStudent, getStudentQuiz);
+
+router.post ('/submitQuizAnswers', auth, isStudent, submitQuizAnswers);
 // Add a Sub Section to a Section
 router.post ('/addSubSection', auth, isInstructor, createSubSection);
 // Get all Registered Courses

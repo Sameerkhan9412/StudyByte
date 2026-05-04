@@ -5,6 +5,7 @@ const userRoute=require('./routes/User');
 const profileRoute=require('./routes/Profile');
 const paymentRoute=require('./routes/Payments');
 const courseRoute=require('./routes/Course');
+const aiRoute=require("./routes/AI")
 
 const database=require("./config/database");
 const cookieParser=require("cookie-parser");
@@ -42,6 +43,7 @@ app.use("/api/v1/auth",userRoute);
 app.use("/api/v1/profile",profileRoute);
 app.use("/api/v1/course",courseRoute);
 app.use("/api/v1/payment",paymentRoute);
+app.use("/api/v1/ai",aiRoute);
 
 
 // default route

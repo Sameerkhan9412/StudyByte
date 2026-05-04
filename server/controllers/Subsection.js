@@ -4,12 +4,12 @@ const Quiz = require("../models/Quiz");
 
 const generateTranscript = require("../utils/generateTranscript");
 const generateQuizFromTranscript = require("../utils/generateQuiz");
-
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
+const processAndStoreChunks = require("../utils/processAndStoreChunks");
 
-// ======================================================
-// Create SubSection
-// ======================================================
+// =============================================
+// Create Lecture (RAG Ready)
+// =============================================
 exports.createSubSection = async (req, res) => {
   try {
     const { sectionId, title, description } = req.body;
@@ -22,30 +22,60 @@ exports.createSubSection = async (req, res) => {
       });
     }
 
-    // 1. Upload video
+    // 1. Upload Video
     const uploadDetails = await uploadImageToCloudinary(
       video,
       process.env.FOLDER_NAME
     );
 
-    // 2. Generate transcript
+    // 2. Generate Transcript
     const transcriptResult = await generateTranscript(
       uploadDetails.secure_url
     );
 
-    // 3. Create lecture
+    if (transcriptResult.transcriptStatus !== "completed") {
+      return res.status(500).json({
+        success: false,
+        message: "Transcript generation failed",
+      });
+    }
+
+    // 3. Create Lecture
     const subSectionDetails = await SubSection.create({
       title,
       timeDuration: `${uploadDetails.duration}`,
       description,
       videoUrl: uploadDetails.secure_url,
-
       transcript: transcriptResult.transcript,
-      transcriptStatus: transcriptResult.transcriptStatus,
-      transcriptError: transcriptResult.transcriptError,
+      transcriptStatus: "completed",
+      transcriptError: "",
+      ragStatus: "processing", // 🔥 start RAG pipeline
+      language: "english",
     });
 
-    // 4. Add lecture to section
+    // 4. Chunk + Embed + Store
+    const chunkStatus = await processAndStoreChunks(
+      subSectionDetails._id,
+      transcriptResult.transcript
+    );
+
+    if (!chunkStatus) {
+      await SubSection.findByIdAndUpdate(subSectionDetails._id, {
+        ragStatus: "failed",
+      });
+
+      return res.status(500).json({
+        success: false,
+        message: "Chunking / Embedding failed",
+      });
+    }
+
+    // 5. Mark RAG Ready
+    await SubSection.findByIdAndUpdate(subSectionDetails._id, {
+      ragStatus: "completed",
+    });
+
+    // 6. Add to Section
     const updatedSection = await Section.findByIdAndUpdate(
       sectionId,
       {
@@ -57,7 +87,7 @@ exports.createSubSection = async (req, res) => {
     return res.status(200).json({
       success: true,
       data: updatedSection,
-      message: "Lecture created successfully",
+      message: "Lecture created + AI ready",
     });
 
   } catch (error) {
@@ -70,9 +100,10 @@ exports.createSubSection = async (req, res) => {
     });
   }
 };
-// ======================================================
+
+// =============================================
 // Update SubSection
-// ======================================================
+// =============================================
 exports.updateSubSection = async (req, res) => {
   try {
     const { sectionId, SubSectionId, title, description } = req.body;
@@ -102,12 +133,13 @@ exports.updateSubSection = async (req, res) => {
       subSection.videoUrl = uploadDetails.secure_url;
       subSection.timeDuration = `${uploadDetails.duration}`;
 
-      // Reset transcript
+      // Reset transcript + RAG
       subSection.transcript = "";
       subSection.transcriptStatus = "pending";
       subSection.transcriptError = "";
+      subSection.ragStatus = "pending";
 
-      // Optional: remove old quiz because lecture changed
+      // Remove old quiz
       await Quiz.findOneAndDelete({
         subSectionId: subSection._id,
       });
@@ -140,39 +172,28 @@ exports.updateSubSection = async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "An error occurred while updating subsection",
+      message: "Update failed",
       error: error.message,
     });
   }
 };
 
-// ======================================================
+// =============================================
 // Delete SubSection
-// ======================================================
+// =============================================
 exports.deleteSubSection = async (req, res) => {
   try {
     const { SubSectionId, sectionId } = req.body;
 
-    // Remove from section
     await Section.findByIdAndUpdate(sectionId, {
       $pull: { SubSection: SubSectionId },
     });
 
-    // Delete quiz also
     await Quiz.findOneAndDelete({
       subSectionId: SubSectionId,
     });
 
-    // Delete subsection
-    const deletedSubSection =
-      await SubSection.findByIdAndDelete(SubSectionId);
-
-    if (!deletedSubSection) {
-      return res.status(404).json({
-        success: false,
-        message: "SubSection not found",
-      });
-    }
+    await SubSection.findByIdAndDelete(SubSectionId);
 
     const updatedSection = await Section.findById(sectionId).populate(
       "SubSection"
@@ -189,15 +210,15 @@ exports.deleteSubSection = async (req, res) => {
 
     return res.status(500).json({
       success: false,
-      message: "An error occurred while deleting subsection",
+      message: "Delete failed",
       error: error.message,
     });
   }
 };
 
-// ======================================================
-// Generate Quiz for Lecture
-// ======================================================
+// =============================================
+// Generate Quiz
+// =============================================
 exports.generateQuiz = async (req, res) => {
   try {
     const { subSectionId } = req.body;
@@ -227,20 +248,13 @@ exports.generateQuiz = async (req, res) => {
 
     const quiz = await Quiz.findOneAndUpdate(
       { subSectionId },
-      {
-        questions,
-        published: false,
-      },
-      {
-        new: true,
-        upsert: true,
-      }
+      { questions, published: true },
+      { new: true, upsert: true }
     );
 
     return res.status(200).json({
       success: true,
       data: quiz,
-      message: "Quiz generated successfully",
     });
 
   } catch (error) {
@@ -250,31 +264,6 @@ exports.generateQuiz = async (req, res) => {
       success: false,
       message: "Quiz generation failed",
       error: error.message,
-    });
-  }
-};
-
-exports.getQuizBySubSection = async (req, res) => {
-  try {
-    const { subSectionId } = req.body;
-
-    const quiz = await Quiz.findOne({ subSectionId });
-
-    if (!quiz) {
-      return res.status(404).json({
-        success: false,
-        message: "Quiz not found",
-      });
-    }
-
-    return res.status(200).json({
-      success: true,
-      data: quiz,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message,
     });
   }
 };

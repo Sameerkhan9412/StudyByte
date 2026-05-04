@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { RxCross2 } from "react-icons/rx";
-import { generateQuiz } from "../../../../../services/operations/courseDetailsAPI";
+import { generateQuiz, getQuizBySubSection } from "../../../../../services/operations/courseDetailsAPI";
 
 export default function QuizReviewModal({
   subSectionId,

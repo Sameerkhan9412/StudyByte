@@ -282,3 +282,109 @@ animation-timing-function: linear
 .section_heading {
   @apply text-2xl font-bold text-richblack-5 lg:text-4xl;
 }
+
+
+/* ─── Custom Animations ───────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* ─── Custom Scrollbar ─────────────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Video Player Overrides ───────────────────────────────── */
+.video-react .video-react-big-play-button {
+  border: none !important;
+  background: rgba(255, 214, 10, 0.9) !important;
+  border-radius: 1rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  line-height: 3rem !important;
+  font-size: 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+@media (min-width: 640px) {
+  .video-react .video-react-big-play-button {
+    width: 4rem !important;
+    height: 4rem !important;
+    line-height: 4rem !important;
+    font-size: 2rem !important;
+    border-radius: 1.25rem !important;
+  }
+}
+
+.video-react .video-react-big-play-button:hover {
+  background: rgba(255, 214, 10, 1) !important;
+  transform: scale(1.1) !important;
+}
+
+.video-react .video-react-big-play-button::before {
+  color: #1a1a2e !important;
+}
+
+.video-react .video-react-control-bar {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85),
+    transparent
+  ) !important;
+}
+
+.video-react .video-react-progress-holder .video-react-play-progress {
+  background: #FFD60A !important;
+}
+
+.video-react .video-react-slider:focus {
+  box-shadow: none !important;
+}

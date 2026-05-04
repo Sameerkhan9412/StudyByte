@@ -1,6 +1,6 @@
 import { toast } from "react-hot-toast"
 import { apiConnector } from "../apiConnector";
-import { courseEndpoints } from "../apis"
+import { aiEndpoints, courseEndpoints } from "../apis"
 
 const {
   COURSE_DETAILS_API,
@@ -20,8 +20,11 @@ const {
   CREATE_RATING_API,
   LECTURE_COMPLETION_API,
   GENERATE_QUIZ_API,
-  GET_QUIZ_API
+  GET_QUIZ_API,
+  SUBMIT_QUIZ_API,
+  GET_STUDENT_QUIZ_API
 } = courseEndpoints
+const {ASK_qUESTION_API,GET_LECTURE_SUMMARY,GENERATE_NOTES_API}=aiEndpoints
 
 export const getAllCourses = async () => {
   let result = []
@@ -264,6 +267,93 @@ export const getQuizBySubSection = async (data, token) => {
 
   return response.data.data;
 };
+
+export const getStudentQuiz = async (
+  data,
+  token
+) => {
+  try {
+    const response = await apiConnector(
+      "POST",
+      GET_STUDENT_QUIZ_API,
+      data,
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+
+    return response.data.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const submitQuizAnswers = async (
+  data,
+  token
+) => {
+  try {
+    const response = await apiConnector(
+      "POST",
+      SUBMIT_QUIZ_API,
+      data,
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+
+    return response.data.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const askLectureAI = async (
+  data,
+  token
+) => {
+  const response = await apiConnector(
+    "POST",
+    ASK_qUESTION_API,
+    data,
+    {
+      Authorization: `Bearer ${token}`,
+    }
+  );
+  console.log("i am resp",response.data)
+
+  return response.data;
+};
+
+export const getLectureSummary = async (
+  data,
+  token
+) => {
+  const response = await apiConnector(
+    "POST",
+    GET_LECTURE_SUMMARY,
+    data,
+    {
+      Authorization: `Bearer ${token}`,
+    }
+  );
+
+  return response.data.data;
+};
+
+export const generateLectureNotes =
+  async (data, token) => {
+    const response = await apiConnector(
+      "POST",
+      GENERATE_NOTES_API,
+      data,
+      {
+        Authorization: `Bearer ${token}`,
+      }
+    );
+
+    return response.data.data;
+  };
 
 // fetching all courses under a specific instructor
 export const fetchInstructorCourses = async (token) => {

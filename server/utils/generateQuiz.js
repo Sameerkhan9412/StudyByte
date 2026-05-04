@@ -8,7 +8,7 @@ async function generateQuizFromTranscript(transcript) {
   const prompt = `
 Generate 5 multiple choice questions from this lecture transcript.
 
-Return ONLY valid JSON array in this format:
+Return ONLY valid JSON array in this format and language should be english whether lecture is avaiable in any language:
 
 [
  {

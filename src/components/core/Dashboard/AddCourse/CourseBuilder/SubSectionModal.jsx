@@ -139,7 +139,7 @@ export default function SubSectionModal({
           }),
         );
 
-        toast.success("Lecture updated");
+        // toast.success("Lecture updated");
         setModalData(null);
       }
     } catch (error) {
@@ -227,7 +227,7 @@ export default function SubSectionModal({
           sectionId: modalData,
         });
 
-        toast.success("Lecture saved");
+        // toast.success("Lecture saved");
       }
     } catch (error) {
       toast.error("Failed to create lecture");
@@ -325,7 +325,7 @@ export default function SubSectionModal({
                   )}
 
                   {lectureSaved && transcriptReady && (
-                    <p className="text-sm text-green-400">Transcript ready.</p>
+                    <p className="text-sm text-yellow-100">Transcript ready.</p>
                   )}
                 </div>
               )}
