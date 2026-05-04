@@ -1,4 +1,5 @@
 const Groq = require("groq-sdk");
+const { default: fetch } = require("node-fetch");
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
