@@ -2,6 +2,9 @@
   "name": "react-tailwind-css-starter-pack",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+  "node": "24.x"
+},
   "dependencies": {
     "@formspree/react": "^2.4.4",
     "@ramonak/react-progress-bar": "^5.0.3",
