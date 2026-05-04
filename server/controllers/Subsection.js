@@ -3,7 +3,7 @@ const SubSection = require("../models/SubSection");
 const Quiz = require("../models/Quiz");
 
 const generateTranscript = require("../utils/generateTranscript");
-const generateQuizFromTranscript = require("../utils/generateQuiz");
+const generateQuizFromTranscript = require("../utils/generateQuizFromTranscript");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const processAndStoreChunks = require("../utils/processAndStoreChunks");
 
