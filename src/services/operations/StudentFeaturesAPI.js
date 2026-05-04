@@ -70,19 +70,19 @@ export async function buyCourse(token,courses,userDetails,navigate,dispatch){
     toast.dismiss(toastId);
 }
 
-async function sendPaymentSuccessEmail(response,amount,token){
-    try {
-        await apiConnector("POST",SEND_PAYMENT_SUCCESS_EMAIL_API,{
-            order_id:response.razorpay_order_id,
-            paymentId:response.razorpay_payment_id,
-            amount,
-        },{
-            Authorization:`Bearer ${token}`
-        })
-    } catch (error) {
-            console.log("PAYMENT SUCCESS EMAIL ERROR",error);
-    }
-}
+// async function sendPaymentSuccessEmail(response,amount,token){
+//     try {
+//         await apiConnector("POST",SEND_PAYMENT_SUCCESS_EMAIL_API,{
+//             order_id:response.razorpay_order_id,
+//             paymentId:response.razorpay_payment_id,
+//             amount,
+//         },{
+//             Authorization:`Bearer ${token}`
+//         })
+//     } catch (error) {
+//             console.log("PAYMENT SUCCESS EMAIL ERROR",error);
+//     }
+// }
 
 
 // verify payment

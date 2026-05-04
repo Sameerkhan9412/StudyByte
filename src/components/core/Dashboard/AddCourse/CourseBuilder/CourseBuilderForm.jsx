@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import IconBtn from '../../../../common/IconBtn';
 import {MdAddCircleOutline} from "react-icons/md"
-import {BiAddToQueue} from "react-icons/bi"
 import { useDispatch, useSelector } from 'react-redux';
 import {BiRightArrow} from "react-icons/bi"
 import { setCourse, setEditCourse, setStep } from '../../../../../slices/courseSlice';

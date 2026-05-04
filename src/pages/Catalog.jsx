@@ -7,7 +7,7 @@ import { apiConnector } from '../services/apiConnector';
 import Footer from '../components/common/Footer'
 import { categories } from '../services/apis';
 import { useSelector } from 'react-redux';
-import CourseCard from '../components/core/Catalog/Course_Card';
+import CourseCard from '../components/core/Catalog/CourseCard';
 import CourseSlider from '../components/core/Catalog/CourseSlider';
 import Error from './Error';
 

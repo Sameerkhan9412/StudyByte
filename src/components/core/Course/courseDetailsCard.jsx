@@ -3,20 +3,12 @@ import copy from "copy-to-clipboard"
 import { buyCourse } from "../../../services/operations/StudentFeaturesAPI"
 
 import { toast } from "react-hot-toast"
-import { BsFillCaretRightFill } from "react-icons/bs"
 import { FaShareSquare } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import { addToCart } from "../../../slices/cartSlice"
 import { ACCOUNT_TYPE } from "../../../utils/constants"
-
-const CourseIncludes = [
-  "8 hours on-demand video",
-  "Full Lifetime access",
-  "Access on Mobile and TV",
-  "Certificate of completion",
-]
 
 function CourseDetailsCard({ course, setConfirmationModal }) {
   const { user } = useSelector((state) => state.profile)
