@@ -2,6 +2,7 @@ const Groq = require("groq-sdk");
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
+  fetch: fetch, 
 });
 
 async function generateQuizFromTranscript(transcript) {
