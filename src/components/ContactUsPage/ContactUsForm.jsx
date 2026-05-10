@@ -9,7 +9,7 @@ const ContactUsForm = () => {
   if (state.succeeded) {
       return <div className="text-4xl mx-auto text-yellow-25 drop-shadow-md ">Your form is submitted successfully , Thanks for joining us!</div>;
   }
-  setLoading(false);
+  // setLoading(false);
 
   return (
     <form
